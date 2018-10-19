@@ -1,4 +1,27 @@
+*, body{
+    margin: 0;
+    padding: 0;
+}
+
 .afbeelding{
     margin:-10%;
+    margin-top:-13%;
     transform: scale(0.8);
+}
+
+.jumbotron{
+    background-color: white !important;
+}
+
+.navbar {
+    min-height: 80px;
+    margin-bottom: 0 !important;
+}
+
+
+
+.form-group{
+    position: relative;
+    width: 30%;
+    left: 35%;
 }
