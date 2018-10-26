@@ -52,7 +52,7 @@
                             </h:inputText>
                         </div>
                         <h:commandButton styleClass="btn btn-primary"
-                                value="Zoek" action="hallo"/>
+                                value="Zoek" action="#{reisController.getReizenByPlaats(gekozenLand.value)}"/>
                     </h:form>
                 </p>
             </div>
@@ -95,6 +95,10 @@
             </div>
         </div>
     </main>
+
+    <h:form>
+        <h:commandButton action="#{landController.vulLandenTabel}" value="vul landen tabel" styleClass="btn btn-primary"/>
+    </h:form>
 
 </h:body>
 

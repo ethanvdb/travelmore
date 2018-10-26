@@ -10,7 +10,7 @@ import java.util.Date;
         {
                 @NamedQuery(
                         name = Reis.FIND_BY_PLAATS,
-                        query = "SELECT r FROM Reis r WHERE r.bestemming.naam = :naam"
+                        query = "SELECT r FROM Reis r WHERE r.bestemming.naam = :plaats"
                 ),
                 @NamedQuery(
                         name = Reis.FIND_ALL,

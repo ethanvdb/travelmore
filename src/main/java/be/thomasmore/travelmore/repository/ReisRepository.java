@@ -24,8 +24,8 @@ public class ReisRepository {
         return entityManager.createNamedQuery(Reis.FIND_ALL, Reis.class).getResultList();
     }
 
-    public List<Reis> findAllByLand(String naam) {
-        return entityManager.createNamedQuery(Reis.FIND_BY_LAND, Reis.class).setParameter("naam", naam).getResultList();
+    public List<Reis> findAllByPlaats(String plaats) {
+        return entityManager.createNamedQuery(Reis.FIND_BY_PLAATS, Reis.class).setParameter("plaats", plaats).getResultList();
     }
 
     public void insert(Reis reis) {

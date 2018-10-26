@@ -37,8 +37,13 @@ public class Land {
     private int id;
     @Column(name = "naam")
     private String naam;
-    @Column(name = "vlagFoto")
-    private String vlagFoto;
+
+    public Land(){
+    }
+
+    public Land(String naam) {
+        this.naam = naam;
+    }
 
     public int getId() {
         return id;
@@ -56,11 +61,5 @@ public class Land {
         this.naam = naam;
     }
 
-    public String getVlagFoto() {
-        return vlagFoto;
-    }
 
-    public void setVlagFoto(String vlagFoto) {
-        this.vlagFoto = vlagFoto;
-    }
 }
