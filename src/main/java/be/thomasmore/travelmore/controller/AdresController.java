@@ -1,9 +1,7 @@
 package be.thomasmore.travelmore.controller;
 
 import be.thomasmore.travelmore.domain.Adres;
-import be.thomasmore.travelmore.domain.Transportmiddel;
 import be.thomasmore.travelmore.service.AdresService;
-import be.thomasmore.travelmore.service.TransportmiddelService;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
