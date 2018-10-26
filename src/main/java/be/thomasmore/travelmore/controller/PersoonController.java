@@ -1,5 +1,6 @@
 package be.thomasmore.travelmore.controller;
 
+import be.thomasmore.travelmore.domain.Persoon;
 import be.thomasmore.travelmore.service.PersoonService;
 
 import javax.faces.bean.ManagedBean;

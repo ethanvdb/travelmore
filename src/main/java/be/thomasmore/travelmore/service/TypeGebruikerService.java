@@ -1,5 +1,6 @@
 package be.thomasmore.travelmore.service;
 
+import be.thomasmore.travelmore.domain.TypeGebruiker;
 import be.thomasmore.travelmore.repository.TypeGebruikerRepository;
 
 import javax.ejb.Stateless;

@@ -1,8 +1,10 @@
 package be.thomasmore.travelmore.repository;
 
+import be.thomasmore.travelmore.domain.Adres;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
+
 
 public class AdresRepository {
     @PersistenceContext(unitName = "travelMorePU")
