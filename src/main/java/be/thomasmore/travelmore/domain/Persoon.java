@@ -36,7 +36,8 @@ public class Persoon {
     private String telefoon;
     @Column(name = "gsm")
     private String gsm;
-    @Column(name = "adres")
+
+    @OneToOne
     private Adres adres;
     @Column(name = "typeGebruiker")
     private TypeGebruiker typeGebruiker;
