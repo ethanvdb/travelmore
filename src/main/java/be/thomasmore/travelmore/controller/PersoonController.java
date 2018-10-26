@@ -34,4 +34,11 @@ public class PersoonController {
     public void submit(){
         this.persoonService.insert(newPersoon);
     }
+
+    public String vulPersoonTabel() {
+
+
+
+        return "index";
+    }
 }
