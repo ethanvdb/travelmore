@@ -37,9 +37,9 @@ public class TypeGebruikerController {
     public String vulTypeGebruikerTabel()
     {
         TypeGebruiker admin = new TypeGebruiker("Admin");
-        typeGebruikerService.insert(admin);
+        this.typeGebruikerService.insert(admin);
         TypeGebruiker user = new TypeGebruiker("User");
-        typeGebruikerService.insert(user);
+        this.typeGebruikerService.insert(user);
 
         return "index";
     }
