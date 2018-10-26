@@ -1,8 +1,5 @@
 package be.thomasmore.travelmore.repository;
 
-import be.thomasmore.travelmore.domain.Persoon;
-import be.thomasmore.travelmore.domain.TypeGebruiker;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;

@@ -1,8 +1,5 @@
 package be.thomasmore.travelmore.service;
 
-import be.thomasmore.travelmore.domain.Adres;
-import be.thomasmore.travelmore.domain.Persoon;
-import be.thomasmore.travelmore.repository.AdresRepository;
 import be.thomasmore.travelmore.repository.PersoonRepository;
 
 import javax.ejb.Stateless;
