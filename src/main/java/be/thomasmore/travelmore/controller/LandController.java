@@ -16,6 +16,19 @@ public class LandController {
     @Inject
     private LandService landService;
 
+    public String vulLandenTabel(){
+        Land spanje = new Land("Spanje");
+        Land duitsland = new Land("Duitsland");
+        Land italie = new Land("Italië");
+
+        this.landService.insert(spanje);
+        this.landService.insert(duitsland);
+        this.landService.insert(italie);
+
+
+        return "index.xhtml";
+    }
+
     public Land getNewLand() {
         return newLand;
     }
@@ -27,8 +40,6 @@ public class LandController {
     public List<Land> getLanden(){
         return this.landService.findAllLanden();
     }
-
-
 
     public void submit(){
         this.landService.insert(newLand);

@@ -24,8 +24,8 @@ public class ReisService {
         return reisRepository.findAll();
     }
 
-    public List<Reis> findAllReizenByLand(String land){
-        return reisRepository.findAllByLand(land);
+    public List<Reis> findAllReizenByPlaats(String plaats){
+        return reisRepository.findAllByPlaats(plaats);
     }
 
     public void updateNaam(int id, String newNaam) {

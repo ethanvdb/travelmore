@@ -1,7 +1,9 @@
 package be.thomasmore.travelmore.controller;
 
+import be.thomasmore.travelmore.domain.Plaats;
 import be.thomasmore.travelmore.domain.Reis;
 import be.thomasmore.travelmore.service.ReisService;
+import com.sun.mail.imap.Rights;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -12,6 +14,7 @@ import java.util.List;
 @ViewScoped
 public class ReisController {
     private Reis newReis = new Reis();
+    private List<Reis> reizen;
 
     @Inject
     private ReisService reisService;
@@ -24,16 +27,21 @@ public class ReisController {
         this.newReis = newReis;
     }
 
-    public List<Reis> getReizen(){
+    public List<Reis> getAllReizen(){
         return this.reisService.findAllReizen();
     }
 
-    public List<Reis> getReizenByLand(String land){
-        return this.reisService.findAllReizenByLand(land);
+    public String getReizenByPlaats(String plaats){
+        this.reizen = this.reisService.findAllReizenByPlaats(plaats);
+        return "zoekReizen";
     }
 
     public void submit(){
         this.reisService.insert(newReis);
+    }
+
+    public List<Reis> getReizen(){
+        return this.reizen;
     }
 
 }
