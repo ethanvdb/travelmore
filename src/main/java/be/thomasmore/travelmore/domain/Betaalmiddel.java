@@ -9,30 +9,28 @@ import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "transportmiddel")
+@Table(name = "betaalmiddel")
 @NamedQueries(
         {
                 @NamedQuery(
-                        name = Transportmiddel.FIND_BY_ID,
-                        query = "SELECT l FROM Transportmiddel l WHERE l.id = :id"
+                        name = Betaalmiddel.FIND_BY_ID,
+                        query = "SELECT l FROM Betaalmiddel l WHERE l.id = :id"
                 ),
                 @NamedQuery(
-                        name = Transportmiddel.FIND_ALL,
-                        query = "SELECT l FROM Transportmiddel l"
+                        name = Betaalmiddel.FIND_ALL,
+                        query = "SELECT l FROM Betaalmiddel l"
                 )
         }
 )
 
-public class Transportmiddel {
-    public static final String FIND_ALL = "Transportmiddel.findAll";
-    public static final String FIND_BY_ID = "Transportmiddel.findById";
+public class Betaalmiddel {
+    public static final String FIND_ALL = "Betaalmiddel.findAll";
+    public static final String FIND_BY_ID = "Betaalmiddel.findById";
 
     @Id
     private int id;
     @Column(name = "soort")
     private String soort;
-    @Column(name = "bedrijf", nullable = true)
-    private String bedrijf;
 
     public int getId() {
         return id;
@@ -48,13 +46,5 @@ public class Transportmiddel {
 
     public void setSoort(String soort) {
         this.soort = soort;
-    }
-
-    public String getBedrijf() {
-        return bedrijf;
-    }
-
-    public void setBedrijf(String bedrijf) {
-        this.bedrijf = bedrijf;
     }
 }
