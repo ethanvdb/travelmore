@@ -1,9 +1,26 @@
 package be.thomasmore.travelmore.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
+import javax.persistence.*;
+
+@Entity
+@Table(name = "persoon")
+@NamedQueries(
+        {
+                @NamedQuery(
+                        name = Adres.FIND_BY_ID,
+                        query = "SELECT l FROM Persoon l WHERE l.id = :id"
+                ),
+                @NamedQuery(
+                        name = Adres.FIND_ALL,
+                        query = "SELECT l FROM Persoon l"
+                )
+        }
+)
 
 public class Persoon {
+
+    public static final String FIND_ALL = "Adres.findAll";
+    public static final String FIND_BY_ID = "Adres.findByCode";
 
     @Id
     private int id;
