@@ -7,11 +7,11 @@ import javax.persistence.*;
 @NamedQueries(
         {
                 @NamedQuery(
-                        name = Adres.FIND_BY_ID,
+                        name = TypeGebruiker.FIND_BY_ID,
                         query = "SELECT l FROM TypeGebruiker l WHERE l.id = :id"
                 ),
                 @NamedQuery(
-                        name = Adres.FIND_ALL,
+                        name = TypeGebruiker.FIND_ALL,
                         query = "SELECT l FROM TypeGebruiker l"
                 )
         }
@@ -19,14 +19,22 @@ import javax.persistence.*;
 
 public class TypeGebruiker {
 
-    public static final String FIND_ALL = "Adres.findAll";
-    public static final String FIND_BY_ID = "Adres.findByCode";
-
+    public static final String FIND_ALL = "TypeGebruiker.findAll";
+    public static final String FIND_BY_ID = "TypeGebruiker.findByCode";
 
     @Id
     private int id;
     @Column(name = "typeNaam")
     private String typeNaam;
+
+    public TypeGebruiker() {
+
+    }
+
+    public TypeGebruiker(String type)
+    {
+        this.setTypeNaam(type);
+    }
 
     public int getId() {
         return id;

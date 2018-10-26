@@ -35,4 +35,19 @@ public class AdresController {
         this.adresService.insert(newAdres);
     }
 
+    public String vulAdresTabel()
+    {
+        Adres adres1 = new Adres("Geel", "Kleinhoefstraat", "2440", "4");
+        adresService.insert(adres1);
+        Adres adres2 = new Adres("Geel", "Kleinhoefstraat", "2440", "5");
+        adresService.insert(adres2);
+        Adres adres3 = new Adres("Geel", "Kleinhoefstraat", "2440", "6");
+        adresService.insert(adres3);
+        Adres adres4 = new Adres("Geel", "Kleinhoefstraat", "2440", "7");
+        adresService.insert(adres4);
+        Adres adres5 = new Adres("Geel", "Kleinhoefstraat", "2440", "8");
+        adresService.insert(adres5);
+
+        return "index";
+    }
 }

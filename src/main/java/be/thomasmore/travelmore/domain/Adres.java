@@ -33,6 +33,18 @@ public class Adres {
     @Column(name = "nummer")
     private String nummer;
 
+    public Adres() {
+
+    }
+
+    public Adres(String plaats, String straat, String postcode, String nummer)
+    {
+        this.setPlaats(plaats);
+        this.setStraat(straat);
+        this.setPostCode(postcode);
+        this.setNummer(nummer);
+    }
+
     public int getId() {
         return id;
     }
