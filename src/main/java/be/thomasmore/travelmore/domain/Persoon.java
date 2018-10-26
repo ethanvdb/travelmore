@@ -39,7 +39,7 @@ public class Persoon {
 
     @OneToOne
     private Adres adres;
-    @Column(name = "typeGebruiker")
+    @OneToOne
     private TypeGebruiker typeGebruiker;
 
     public  Persoon() {
