@@ -28,6 +28,14 @@ public class ReisService {
         return reisRepository.findAllByPlaats(plaats);
     }
 
+    public List<Reis> findAllReizenByLand(String land){
+        return reisRepository.findAllByLand(land);
+    }
+
+    public List<Reis> filterReizen(long bestemmingId, long vertrekplaatsId, long transportmiddelId, int gekozenPrijs, int gekozenVrijePlaatsen){
+        return reisRepository.filterReizen(bestemmingId, vertrekplaatsId, transportmiddelId, gekozenPrijs, gekozenVrijePlaatsen);
+    }
+
     public void updateNaam(int id, String newNaam) {
         Reis reis = reisRepository.findById(id);
         reis.setNaam(newNaam);

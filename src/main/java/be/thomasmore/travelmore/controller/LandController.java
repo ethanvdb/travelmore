@@ -17,16 +17,14 @@ public class LandController {
     private LandService landService;
 
     public String vulLandenTabel(){
-        Land spanje = new Land("Spanje");
         Land duitsland = new Land("Duitsland");
-        Land italie = new Land("Italië");
-
-        this.landService.insert(spanje);
         this.landService.insert(duitsland);
+
+        Land italie = new Land("Italië");
         this.landService.insert(italie);
 
 
-        return "index.xhtml";
+        return "index";
     }
 
     public Land getNewLand() {

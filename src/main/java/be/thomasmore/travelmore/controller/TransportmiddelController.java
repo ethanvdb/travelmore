@@ -32,4 +32,14 @@ public class TransportmiddelController {
         this.transportmiddelService.insert(newTransportmiddel);
     }
 
+    public String vulTransportmiddelTabel(){
+        Transportmiddel bus = new Transportmiddel("Bus");
+        Transportmiddel vliegtuig = new Transportmiddel("Vliegtuig");
+
+        transportmiddelService.insert(bus);
+        transportmiddelService.insert(vliegtuig);
+
+        return "index";
+    }
+
 }

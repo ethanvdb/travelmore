@@ -24,6 +24,13 @@ public class PlaatsRepository {
         return entityManager.createNamedQuery(Plaats.FIND_ALL, Plaats.class).getResultList();
     }
 
+    public List<Plaats> findAllBestemmingen(){
+        return entityManager.createNamedQuery(Plaats.FIND_ALL_BESTEMMINGEN, Plaats.class).getResultList();
+    }
+
+    public List<Plaats> findAllVertrekplaatsen(){
+        return entityManager.createNamedQuery(Plaats.FIND_ALL_VERTREKPLAATSEN, Plaats.class).getResultList();
+    }
 
     public void insert(Plaats plaats) {
         entityManager.persist(plaats);

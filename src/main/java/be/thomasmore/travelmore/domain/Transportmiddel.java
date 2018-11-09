@@ -1,11 +1,6 @@
 package be.thomasmore.travelmore.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -28,11 +23,20 @@ public class Transportmiddel {
     public static final String FIND_BY_ID = "Transportmiddel.findById";
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "soort")
     private String soort;
     @Column(name = "bedrijf", nullable = true)
     private String bedrijf;
+
+    public Transportmiddel(){
+
+    }
+
+    public Transportmiddel(String soort) {
+        this.soort = soort;
+    }
 
     public int getId() {
         return id;
@@ -56,5 +60,10 @@ public class Transportmiddel {
 
     public void setBedrijf(String bedrijf) {
         this.bedrijf = bedrijf;
+    }
+
+    @Override
+    public String toString() {
+        return this.soort;
     }
 }

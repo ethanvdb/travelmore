@@ -1,6 +1,8 @@
 package be.thomasmore.travelmore.domain;
 
 import javax.persistence.*;
+import javax.persistence.GenerationType;
+import be.thomasmore.travelmore.domain.Reis;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
@@ -15,6 +17,14 @@ import java.util.Date;
                 @NamedQuery(
                         name= Plaats.FIND_BY_ID,
                         query = "SELECT p from Plaats p"
+                ),
+                @NamedQuery(
+                        name= Plaats.FIND_ALL_BESTEMMINGEN,
+                        query = "select p from Plaats p where p.id IN (SELECT r.bestemming.id from Reis r)"
+                ),
+                @NamedQuery(
+                        name= Plaats.FIND_ALL_VERTREKPLAATSEN,
+                        query = "select p from Plaats p where p.id IN (SELECT r.vertrekPlaats.id from Reis r)"
                 )
         }
 )
@@ -22,13 +32,25 @@ import java.util.Date;
 public class Plaats {
     public static final String FIND_ALL = "Plaats.findAll";
     public static final String FIND_BY_ID = "Plaats.findById";
+    public static final String FIND_ALL_BESTEMMINGEN = "Plaats.findAllBestemmingen";
+    public static final String FIND_ALL_VERTREKPLAATSEN = "Plaats.findAllVertrekplaatsen";
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "naam")
     private String naam;
     @OneToOne
     private Land land;
+
+    public Plaats(){
+
+    }
+
+    public Plaats(String naam, Land land){
+        this.land = land;
+        this.naam = naam;
+    }
 
     public int getId() {
         return id;
@@ -52,5 +74,10 @@ public class Plaats {
 
     public void setLand(Land land) {
         this.land = land;
+    }
+
+    @Override
+    public String toString() {
+        return this.naam;
     }
 }

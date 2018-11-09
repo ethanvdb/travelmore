@@ -24,6 +24,14 @@ public class PlaatsService {
         return plaatsRepository.findAll();
     }
 
+    public List<Plaats> findAllBestemmingen(){
+        return plaatsRepository.findAllBestemmingen();
+    }
+
+    public List<Plaats> findAllVertrekplaatsen(){
+        return plaatsRepository.findAllVertrekplaatsen();
+    }
+
     public void updateNaam(int id, String newNaam) {
         Plaats plaats = plaatsRepository.findById(id);
         plaats.setNaam(newNaam);

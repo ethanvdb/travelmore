@@ -1,6 +1,7 @@
 package be.thomasmore.travelmore.domain;
 
 import javax.persistence.*;
+import javax.persistence.GenerationType;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
@@ -13,22 +14,36 @@ import java.util.Date;
                         query = "SELECT r FROM Reis r WHERE r.bestemming.naam = :plaats"
                 ),
                 @NamedQuery(
+                        name = Reis.FIND_BY_LAND,
+                        query = "SELECT r FROM Reis r WHERE r.bestemming.land.naam = :land"
+                ),
+                @NamedQuery(
                         name = Reis.FIND_ALL,
                         query = "SELECT r FROM Reis r"
                 ),
                 @NamedQuery(
                         name= Reis.FIND_BY_ID,
                         query = "SELECT r from Reis r"
+                ),
+                @NamedQuery(
+                        name= Reis.FIND_REIS_BY_FILTERS,
+                        query = "SELECT r from Reis r where r.bestemming.id = :bestemmingid and r.vertrekPlaats.id = :vertrekplaatsId" +
+                                " and r.transportmiddel.id = :transportmiddelId and r.maxPlaatsen >= :gekozenVrijePlaatsen" +
+                                " and r.prijs <= :gekozenPrijs"
                 )
+
         }
 )
 
 public class Reis {
     public static final String FIND_ALL = "Reis.findAll";
     public static final String FIND_BY_PLAATS = "Reis.findByPlaats";
+    public static final String FIND_BY_LAND = "Reis.findByLand";
     public static final String FIND_BY_ID = "Reis.findById";
+    public static final String FIND_REIS_BY_FILTERS = "Reis.findReisByFilters";
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "naam")
     private String naam;
@@ -48,6 +63,20 @@ public class Reis {
     private Plaats bestemming;
 
 
+    public Reis(){
+
+    }
+
+    public Reis(String naam, Date beginDatum, Date eindDatum, int maxPlaatsen, int prijs, Transportmiddel transportmiddel, Plaats vertrekPlaats, Plaats bestemming) {
+        this.naam = naam;
+        this.beginDatum = beginDatum;
+        this.eindDatum = eindDatum;
+        this.maxPlaatsen = maxPlaatsen;
+        this.prijs = prijs;
+        this.transportmiddel = transportmiddel;
+        this.vertrekPlaats = vertrekPlaats;
+        this.bestemming = bestemming;
+    }
 
     public int getId() {
         return id;
@@ -105,19 +134,5 @@ public class Reis {
         this.transportmiddel = transportmiddel;
     }
 
-    public Plaats getVertrekPlaats() {
-        return vertrekPlaats;
-    }
 
-    public void setVertrekPlaats(Plaats vertrekPlaats) {
-        this.vertrekPlaats = vertrekPlaats;
-    }
-
-    public Plaats getBestemming() {
-        return bestemming;
-    }
-
-    public void setBestemming(Plaats bestemming) {
-        this.bestemming = bestemming;
-    }
 }
