@@ -12,6 +12,7 @@ import java.util.List;
 @ViewScoped
 public class LandController {
     private Land newLand = new Land();
+    private List<Land> landen;
 
     @Inject
     private LandService landService;
@@ -38,6 +39,16 @@ public class LandController {
     public List<Land> getLanden(){
         return this.landService.findAllLanden();
     }
+
+    public String getAllLanden(){
+        setLanden(this.landService.findAllLanden());
+        return "boeking";
+    }
+
+    public void setLanden(List<Land> landen) {
+        this.landen = landen;
+    }
+
 
     public void submit(){
         this.landService.insert(newLand);
