@@ -18,6 +18,10 @@ public class AdresRepository {
         return entityManager.createNamedQuery(Adres.FIND_ALL, Adres.class).getResultList();
     }
 
+    public Adres findByPostCode(String postCode) {
+        return entityManager.createNamedQuery(Adres.FIND_BY_POSTCODE, Adres.class).setParameter("postCode", postCode).getSingleResult();
+    }
+
     public void insert(Adres adres) {
         entityManager.persist(adres);
     }

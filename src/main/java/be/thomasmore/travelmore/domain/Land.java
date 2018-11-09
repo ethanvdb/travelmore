@@ -64,5 +64,4 @@ public class Land {
         this.naam = naam;
     }
 
-
 }

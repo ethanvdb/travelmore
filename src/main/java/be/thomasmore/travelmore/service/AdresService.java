@@ -21,7 +21,13 @@ public class AdresService {
         return adresRepository.findAll();
     }
 
+    public Adres findAdresByPostCode(String postCode) {
+        return adresRepository.findByPostCode(postCode);
+    }
+
+
     public void insert(Adres adres) {
         adresRepository.insert(adres);
     }
+
 }

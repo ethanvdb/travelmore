@@ -13,6 +13,10 @@ import javax.persistence.*;
                 @NamedQuery(
                         name = Adres.FIND_ALL,
                         query = "SELECT l FROM Adres l"
+                ),
+                @NamedQuery(
+                        name = Adres.FIND_BY_POSTCODE,
+                        query = "SELECT l FROM Adres l WHERE l.postCode = :postCode"
                 )
         }
 )
@@ -21,6 +25,7 @@ public class Adres {
 
     public static final String FIND_ALL = "Adres.findAll";
     public static final String FIND_BY_ID = "Adres.findByCode";
+    public static final String FIND_BY_POSTCODE = "Adres.findByPostCode";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
