@@ -27,9 +27,11 @@ import java.util.Date;
                 ),
                 @NamedQuery(
                         name= Reis.FIND_REIS_BY_FILTERS,
-                        query = "SELECT r from Reis r where r.bestemming.id = :bestemmingid and r.vertrekPlaats.id = :vertrekplaatsId" +
-                                " and r.transportmiddel.id = :transportmiddelId and r.maxPlaatsen >= :gekozenVrijePlaatsen" +
-                                " and r.prijs <= :gekozenPrijs"
+                        query = "SELECT r from Reis r where (r.bestemming.id = :bestemmingid or :bestemmingid is null or :bestemmingid = '') " +
+                                " and (r.vertrekPlaats.id = :vertrekplaatsId or :vertrekplaatsId is null or :vertrekplaatsId = '')" +
+                                " and (r.transportmiddel.id = :transportmiddelId or :transportmiddelId is null or :transportmiddelId = '')" +
+                                " and (r.maxPlaatsen >= :gekozenVrijePlaatsen or :gekozenVrijePlaatsen is null or :gekozenVrijePlaatsen = '')" +
+                                " and (r.prijs <= :gekozenPrijs or :gekozenPrijs is null or :gekozenPrijs = '')"
                 )
 
         }
@@ -134,5 +136,19 @@ public class Reis {
         this.transportmiddel = transportmiddel;
     }
 
+    public Plaats getVertrekPlaats() {
+        return vertrekPlaats;
+    }
 
+    public void setVertrekPlaats(Plaats vertrekPlaats) {
+        this.vertrekPlaats = vertrekPlaats;
+    }
+
+    public Plaats getBestemming() {
+        return bestemming;
+    }
+
+    public void setBestemming(Plaats bestemming) {
+        this.bestemming = bestemming;
+    }
 }

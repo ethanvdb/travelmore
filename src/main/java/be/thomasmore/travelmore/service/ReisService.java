@@ -32,7 +32,7 @@ public class ReisService {
         return reisRepository.findAllByLand(land);
     }
 
-    public List<Reis> filterReizen(long bestemmingId, long vertrekplaatsId, long transportmiddelId, int gekozenPrijs, int gekozenVrijePlaatsen){
+    public List<Reis> filterReizen(int bestemmingId, int vertrekplaatsId, int transportmiddelId, int gekozenPrijs, int gekozenVrijePlaatsen){
         return reisRepository.filterReizen(bestemmingId, vertrekplaatsId, transportmiddelId, gekozenPrijs, gekozenVrijePlaatsen);
     }
 
