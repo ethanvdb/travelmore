@@ -40,51 +40,74 @@
             </div>
         </nav>
     </header>
-    <main role="main">
-        <section>
+    <main role="main" class="bg-light">
+        <section class="bg-white">
             <h:form>
-                <h:selectOneMenu id="bestemming" binding="#{gekozenBestemming}" >
-                    <f:selectItems  value="#{plaatsController.allBestemmingen}" var="b" itemLabel="#{b.toString()}" itemValue="#{b.id}"/>
-                </h:selectOneMenu>
-                <h:selectOneMenu id="vertrekplaats" binding="#{gekozenVertrekplaats}" >
-                    <f:selectItems  value="#{plaatsController.allVertrekplaatsen}" var="v" itemLabel="#{v.toString()}" itemValue="#{v.id}"/>
-                </h:selectOneMenu>
-                <h:selectOneMenu id="transportmiddel" binding="#{gekozenTransportmiddel}" >
-                    <f:selectItems  value="#{transportmiddelController.transportmiddelen}" var="t" itemLabel="#{t.toString()}" itemValue="#{t.id}"/>
-                </h:selectOneMenu>
-                <h:inputText binding="#{gekozenPrijs}">
-                    <f:validateLongRange minimum="0"/>
-                </h:inputText>
-                <h:inputText binding="#{gekozenVrijePlaatsen}">
-                    <f:validateLongRange minimum="1" maximum="100"/>
-                </h:inputText>
+                <div class="form-group">
+                    <label for="bestemming">Bestemming</label>
+                    <h:selectOneMenu id="bestemming" binding="#{gekozenBestemming}" >
+                        <f:selectItem itemValue = "" itemLabel = "Kies je bestemming" />
+                        <f:selectItems  value="#{plaatsController.allBestemmingen}" var="b" itemLabel="#{b.toString()}" itemValue="#{b.id}"/>
+                    </h:selectOneMenu>
+                </div>
+                <div class="form-group">
+                    <label for="vertrekplaats">Vertrekplaats</label>
+                    <h:selectOneMenu id="vertrekplaats" binding="#{gekozenVertrekplaats}" >
+                        <f:selectItem itemValue = "" itemLabel = "Kies je vertrekplaats" />
+                        <f:selectItems  value="#{plaatsController.allVertrekplaatsen}" var="v" itemLabel="#{v.toString()}" itemValue="#{v.id}"/>
+                    </h:selectOneMenu>
+                </div>
+
+                <div class="form-group">
+                    <label for="transportmiddel">Transportmiddel</label>
+                    <h:selectOneMenu id="transportmiddel" binding="#{gekozenTransportmiddel}" >
+                        <f:selectItem itemValue = "" itemLabel = "Kies je transportmiddel" />
+                        <f:selectItems  value="#{transportmiddelController.transportmiddelen}" var="t" itemLabel="#{t.toString()}" itemValue="#{t.id}"/>
+                    </h:selectOneMenu>
+                </div>
+                <div class="form-group">
+                    <label for="prijs">Budget</label>
+                    <h:inputText id="prijs" binding="#{gekozenPrijs}">
+                    </h:inputText>
+                </div>
+
+                <div class="form-group">
+                    <label for="plaatsen">Aantal plaatsen</label>
+                    <h:inputText id="plaatsen" binding="#{gekozenVrijePlaatsen}">
+                    </h:inputText>
+                </div>
+
                 <h:commandButton value="Filter" action="#{reisController.filterReizen(
                 gekozenBestemming.value,
-                gekozenVertrekPlaats.value,
-                gekozenTransportMiddel.value,
+                gekozenVertrekplaats.value,
+                gekozenTransportmiddel.value,
                 gekozenPrijs.value,
                 gekozenVrijePlaatsen.value)}"/>
             </h:form>
         </section>
 
-        <h:dataTable value="#{reisController.reizen}" var="tempReis">
-            <h:column>
-                <f:facet name="header">Id</f:facet>
-                Tafel - #{tempReis.id}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Naam</f:facet>
-                #{tempReis.naam}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Datum</f:facet>
-                #{tempReis.beginDatum}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Prijs</f:facet>
-                #{tempReis.prijs}
-            </h:column>
-        </h:dataTable>
+        <div class="album py-5">
+            <div class="container">
+                <h1 class="display-3 text-center">Reizen</h1>
+                <div class="row py-5">
+                    <ui:repeat value="#{reisController.reizen}" var="tempReis">
+                        <div class="col-md-4">
+                            <div class="card mb-4 shadow-sm">
+                                <img class="card-img-top" src="images/standaard.jpg" alt="Card image cap"/>
+                                <div class="card-body">
+                                    <h5 class="card-title">#{tempReis.naam}</h5>
+                                    <h6 class="card-subtitle mb-2">Prijs: #{tempReis.prijs} euro</h6>
+                                    <h6 class="card-subtitle mb-2 text-muted">#{tempReis.bestemming.naam} - #{tempReis.bestemming.land.naam}</h6>
+                                    <a href="#" class="btn btn-dark">Meer info</a>
+                                </div>
+                            </div>
+                        </div>
+                    </ui:repeat>
+                </div>
+            </div>
+        </div>
+
+
     </main>
 
 
