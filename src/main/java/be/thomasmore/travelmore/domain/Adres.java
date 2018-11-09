@@ -23,6 +23,7 @@ public class Adres {
     public static final String FIND_BY_ID = "Adres.findByCode";
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "plaats")
     private String plaats;

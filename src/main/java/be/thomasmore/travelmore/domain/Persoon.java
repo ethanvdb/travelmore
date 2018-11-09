@@ -23,6 +23,7 @@ public class Persoon {
     public static final String FIND_BY_ID = "Persoon.findByCode";
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "naam")
     private String naam;
