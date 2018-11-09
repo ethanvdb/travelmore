@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+<link rel="stylesheet" type="text/css" href="css/style.css"/>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/travelmore.js"></script>
+
+<h:head>
+    <title>Travel More - Login</title>
+</h:head>
+
+<h:body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#"><img src="images/travelmore.png" alt="" srcset="" class="afbeelding" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item zoeken-menuknop">
+                        <a class="nav-link" href="#">Reizen zoeken</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Boeken</a>
+                    </li>
+                </ul>
+                <a class="nav-link" href="#">Login <span class="sr-only">(current)</span></a>
+            </div>
+        </nav>
+    </header>
+
+    <div id="LoginForm">
+        <div class="container">
+            <h1 class="form-heading">Welkom op de login-pagina</h1>
+            <div class="login-form">
+                <div class="main-div">
+                    <div class="panel">
+                        <h2>Login</h2>
+                        <p>Gelieve uw email en wachtwoord op te geven</p>
+                    </div>
+                    <form id="Login">
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="inputEmail" placeholder="Email"></input>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="inputPassword" placeholder="Wachtwoord"></input>
+                        </div>
+                        <!--<div class="forgot">-->
+                            <!--<a href="reset.html">Forgot password?</a>-->
+                        <!--</div>-->
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--<h:dataTable value="#{reisController.getReizen()}" var="tempReis">-->
+        <!--<h:column>-->
+            <!--<f:facet name="header">Id</f:facet>-->
+            <!--Tafel - #{tempReis.Id}-->
+        <!--</h:column>-->
+        <!--<h:column>-->
+            <!--<f:facet name="header">Naam</f:facet>-->
+            <!--#{tempReis.naam}-->
+        <!--</h:column>-->
+        <!--<h:column>-->
+            <!--<f:facet name="header">Datum</f:facet>-->
+            <!--#{tempReis.beginDatum}-->
+        <!--</h:column>-->
+        <!--<h:column>-->
+            <!--<f:facet name="header">Prijs</f:facet>-->
+            <!--#{tempReis.prijs}-->
+        <!--</h:column>-->
+    <!--</h:dataTable>-->
+
+
+</h:body>
+</html>
