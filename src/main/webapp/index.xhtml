@@ -34,14 +34,16 @@
                         </h:form>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Boeken</a>
+                        <h:form>
+                            <h:commandLink action="#{landController.getAllLanden}" value="Boeken" styleClass="nav-link"/>
+                        </h:form>
                     </li>
                 </ul>
                 <a class="nav-link" href="login.xhtml">Login</a>
-            </div>
-        </nav>
+        </div>
+    </nav>
 
-    </header>
+</header>
     <main role="main">
         <section class="reis-zoek jumbotron text-center">
             <div class="container">
@@ -107,8 +109,10 @@
         <h:commandButton action="#{plaatsController.vulPlaatsenTabel}" value="vul plaatsen tabel" styleClass="btn btn-primary"/>
         <h:commandButton action="#{transportmiddelController.vulTransportmiddelTabel}" value="vul transport tabel" styleClass="btn btn-primary"/>
         <h:commandButton action="#{reisController.vulReisTabel}" value="vul reis tabel" styleClass="btn btn-primary"/>
+        <h:commandButton action="#{typeGebruikerController.vulTypeGebruikerTabel}" value="vul typegebruiker tabel" styleClass="btn btn-primary"/>
+        <h:commandButton action="#{adresController.vulAdresTabel}" value="vul adres tabel" styleClass="btn btn-primary"/>
+        <h:commandButton action="#{persoonController.vulPersoonTabel}" value="vul persoon tabel" styleClass="btn btn-primary"/>
     </h:form>
-
 </h:body>
 
 </html>

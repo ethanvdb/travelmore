@@ -24,6 +24,7 @@ public class Boeking {
     public static final String FIND_BY_ID = "Boeking.findById";
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "naam")
     private String naam;

@@ -54,8 +54,26 @@ public class ReisController implements Serializable{
         return "zoekReizen";
     }
 
-    public String filterReizen(long bestemmingId, long vertrekplaatsId, long transportmiddelId, int gekozenPrijs, int gekozenVrijePlaatsen){
-        setReizen(this.reisService.filterReizen(bestemmingId, vertrekplaatsId, transportmiddelId, gekozenPrijs, gekozenVrijePlaatsen));
+    public String filterReizen(int bestemmingId, int vertrekplaatsId, int transportmiddelId, String gekozenPrijs, String gekozenVrijePlaatsen){
+        int gekozenPrijsInt;
+        int gekozenVrijePlaatsenInt;
+
+        try{
+            gekozenPrijsInt = Integer.parseInt(gekozenPrijs);
+        }catch (NumberFormatException ex){
+            gekozenPrijsInt = 2147483647;
+        }
+
+        try{
+            gekozenVrijePlaatsenInt = Integer.parseInt(gekozenVrijePlaatsen);
+        }catch (NumberFormatException ex){
+            gekozenVrijePlaatsenInt = 1;
+        }
+
+
+
+
+        setReizen(this.reisService.filterReizen(bestemmingId, vertrekplaatsId, transportmiddelId, gekozenPrijsInt, gekozenVrijePlaatsenInt));
         return "zoekReizen";
     }
 
@@ -71,12 +89,7 @@ public class ReisController implements Serializable{
         this.reizen = reizen;
     }
 
-    public List<String> getLijst() {
-        this.lijst.add("hallo");
-        this.lijst.add("hallo");
-        this.lijst.add("hallo");
-        return this.lijst;
-    }
+
 
     public void setLijst(List<String> lijst) {
         this.lijst = lijst;
@@ -98,5 +111,7 @@ public class ReisController implements Serializable{
 
         return "index";
     }
+
+
 
 }
