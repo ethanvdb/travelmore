@@ -6,10 +6,12 @@ import be.thomasmore.travelmore.domain.TypeGebruiker;
 import be.thomasmore.travelmore.service.AdresService;
 import be.thomasmore.travelmore.service.PersoonService;
 import be.thomasmore.travelmore.service.TypeGebruikerService;
+import be.thomasmore.travelmore.TrippleDes;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
+import javax.validation.constraints.Null;
 import java.util.List;
 
 @ManagedBean
@@ -17,6 +19,8 @@ import java.util.List;
 public class PersoonController {
 
     private Persoon newPersoon = new Persoon();
+    private Persoon login;
+    private TrippleDes trippleDes = new TrippleDes();
 
     @Inject
     private PersoonService persoonService;
@@ -55,5 +59,39 @@ public class PersoonController {
         this.persoonService.insert(persoon5);
 
         return "index";
+    }
+
+    public Persoon getLogin() {
+        return login;
+    }
+
+    public void setLogin(Persoon login) {
+        this.login = login;
+    }
+
+    //Kijken of er een gebruiker bestaat met de opgegeven email
+    public Persoon getPersoonByEmail(String email){
+        Persoon persoon = this.persoonService.findPersoonByEmail(email);
+
+        setLogin(null);
+
+        if (persoon != null){
+            return persoon;
+        }
+        else {
+            return null;
+        }
+    }
+
+    //Kijken of er een gebruiker bestaat met de opgegeven mail en het juiste wachtwoord
+    public Persoon checkLogin(String email, String wachtwoord){
+        Persoon persoon = getPersoonByEmail(email);
+        if (persoon != null){
+            //kijken of wachtwoord overeen komt
+        }
+        else{
+            //persoon bestaat niet
+            return null;
+        }
     }
 }
