@@ -10,7 +10,7 @@
 <script type="text/javascript" src="js/travelmore.js"></script>
 
 <h:head>
-    <title>Travel More - Login</title>
+    <title>Travel More - Boeken</title>
 </h:head>
 
 <h:body>
@@ -44,17 +44,12 @@
             <div>
                 <div class="main-div">
 
-                    <h:form id="Boeking">
-                        <h:dataTable value="#{landController.landen}" var="landBestemming">
-                            <h:column>
-                                <f:facet name="header">Land</f:facet>
-                                #{landBestemming.naam}
-                            </h:column>
-                        </h:dataTable>
+                    <h:form id="Boeking" >
+                        <h3>Kies een land</h3>
 
-                        <h:selectOneMenu id="land" binding="#{gekozenLand}" >
-                            <f:selectItem value="0" itemLabel="- Selecteer een land -"/>
-                            <!--<f:selectItems  value="#{landController.landen}" var="t" itemLabel="#{t.naam}" itemValue="#{t.id}"/>-->
+                        <h:selectOneMenu id="land" value="#{gekozenLand}" onchange="submit()">
+                            <f:selectItem itemValue="0" itemLabel="- Selecteer een land -"/>
+                            <f:selectItems  value="#{landController.landen}" var="t" itemLabel="#{t.naam}" itemValue="#{t.id}"/>
                         </h:selectOneMenu>
                     </h:form>
 
