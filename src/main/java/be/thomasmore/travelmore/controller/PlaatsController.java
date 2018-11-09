@@ -14,6 +14,7 @@ import java.util.List;
 @ViewScoped
 public class PlaatsController {
     private Plaats newPlaats = new Plaats();
+    private List<Plaats> plaatsen;
 
     @Inject
     private PlaatsService plaatsService;
@@ -57,6 +58,10 @@ public class PlaatsController {
         plaatsService.insert(berlijn);
 
         return "index";
+    }
+
+    public void setPlaatsen(List<Plaats> plaatsen) {
+        this.plaatsen = plaatsen;
     }
 
 }
