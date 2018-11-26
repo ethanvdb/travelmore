@@ -70,4 +70,5 @@ public class TrippleDes {
         System.out.println("Decrypted String:" + decrypted);
 
     }
+
 }

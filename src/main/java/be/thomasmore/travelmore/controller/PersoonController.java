@@ -20,7 +20,15 @@ public class PersoonController {
 
     private Persoon newPersoon = new Persoon();
     private Persoon login;
-    private TrippleDes trippleDes = new TrippleDes();
+    private TrippleDes trippleDes;
+
+    {
+        try {
+            trippleDes = new TrippleDes();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @Inject
     private PersoonService persoonService;
@@ -88,6 +96,12 @@ public class PersoonController {
         Persoon persoon = getPersoonByEmail(email);
         if (persoon != null){
             //kijken of wachtwoord overeen komt
+            if (trippleDes.decrypt(persoon.getWachtwoord()) == wachtwoord){
+                return persoon;
+            }
+            else {
+                return null;
+            }
         }
         else{
             //persoon bestaat niet
