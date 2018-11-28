@@ -3,7 +3,7 @@ package be.thomasmore.travelmore.service;
 import be.thomasmore.travelmore.domain.Persoon;
 
 import be.thomasmore.travelmore.repository.PersoonRepository;
-import com.sun.deploy.perf.PerfRollup;
+//import com.sun.deploy.perf.PerfRollup;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
