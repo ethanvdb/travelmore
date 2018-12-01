@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+<link rel="stylesheet" type="text/css" href="css/style.css"/>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/travelmore.js"></script>
+
+<h:head>
+    <title>Travel More - Login</title>
+</h:head>
+
+<h:body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="index.xhtml"><img src="images/travelmore.png" alt="" srcset="" class="afbeelding" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.xhtml">Home</a>
+                    </li>
+                    <li class="nav-item zoeken-menuknop">
+                        <a class="nav-link" href="#">Reizen zoeken</a>
+                    </li>
+                    <li class="nav-item">
+                        <h:form>
+                            <h:commandLink action="#{reisController.getAllReizen}" value="Bekijk alle reizen" styleClass="nav-link"/>
+                        </h:form>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Boeken</a>
+                    </li>
+                </ul>
+                <a class="nav-link" href="#">Login <span class="sr-only">(current)</span></a>
+            </div>
+        </nav>
+    </header>
+
+    <div id="LoginForm">
+        <div class="container">
+            <h1 class="form-heading">Maak hier een nieuwe reis aan</h1>
+            <div class="login-form">
+                <div class="main-div">
+                    <div class="panel">
+                        <h2>Nieuwe Reis</h2>
+                    </div>
+                    <h:form id="nieuweReisForm" styleClass="inline">
+                        <div class="form-group">
+                            <label for="naamNR">Naam van de reis</label>
+                            <h:inputText styleClass="form-control" id="naamNR" binding="#{gekozenNaam}">
+                            </h:inputText>
+
+                            <label for="bestemmingNR">Bestemming</label>
+                            <h:selectOneMenu styleClass="form-control" id="bestemmingNR" binding="#{gekozenBestemming}" >
+                                <f:selectItem itemValue = "" itemLabel = "Kies je bestemming" />
+                                <f:selectItems  value="#{plaatsController.allBestemmingen}" var="b" itemLabel="#{b.toString()}" itemValue="#{b.id}"/>
+                            </h:selectOneMenu>
+
+                            <label for="vertrekplaatsNR">Vertrekplaats</label>
+                            <h:selectOneMenu styleClass="form-control" id="vertrekplaatsNR" binding="#{gekozenVertrekplaats}" >
+                                <f:selectItem itemValue = "" itemLabel = "Kies je vertrekplaats" />
+                                <f:selectItems  value="#{plaatsController.allVertrekplaatsen}" var="v" itemLabel="#{v.toString()}" itemValue="#{v.id}"/>
+                            </h:selectOneMenu>
+
+                            <label for="transportmiddelNR">Transportmiddel</label>
+                            <h:selectOneMenu styleClass="form-control" id="transportmiddelNR" binding="#{gekozenTransportmiddel}" >
+                                <f:selectItem itemValue = "" itemLabel = "Kies je transportmiddel" />
+                                <f:selectItems  value="#{transportmiddelController.transportmiddelen}" var="t" itemLabel="#{t.toString()}" itemValue="#{t.id}"/>
+                            </h:selectOneMenu>
+
+                            <label for="prijsNR">Budget</label>
+                            <h:inputText styleClass="form-control" id="prijsNR" binding="#{gekozenPrijs}">
+                            </h:inputText>
+
+                            <label for="plaatsenNR">Aantal plaatsen</label>
+                            <h:inputText styleClass="form-control" id="plaatsenNR" binding="#{gekozenVrijePlaatsen}">
+                            </h:inputText>
+
+                            <h:commandButton styleClass="form-control" value="Filter" action="#{reisController.addReis(
+                                    gekozenNaam.value,
+                                    gekozenBestemming.value,
+                                    gekozenVertrekplaats.value,
+                                    gekozenTransportmiddel.value,
+                                    gekozenPrijs.value,
+                                    gekozenVrijePlaatsen.value)}"/>
+                        </div>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</h:body>
+</html>

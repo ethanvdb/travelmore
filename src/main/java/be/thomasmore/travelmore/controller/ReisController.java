@@ -77,6 +77,26 @@ public class ReisController implements Serializable{
         return "zoekReizen";
     }
 
+    public String nieuweReis(){
+        return "nieuweReisForm";
+    }
+
+    public String addReis(String naam, int bestemmingId, int vertrekplaatsId, int transportmiddelId, String gekozenPrijs, String gekozenVrijePlaatsen){
+        this.newReis.setNaam(naam);
+        this.newReis.setBeginDatum(new Date());
+        this.newReis.setEindDatum(new Date());
+        this.newReis.setBestemming(plaatsService.findPlaatsById(bestemmingId));
+        this.newReis.setVertrekPlaats(plaatsService.findPlaatsById(vertrekplaatsId));
+        this.newReis.setTransportmiddel(transportmiddelService.findTransportmiddelById(transportmiddelId));
+        this.newReis.setPrijs(Integer.parseInt(gekozenPrijs));
+        this.newReis.setMaxPlaatsen(Integer.parseInt(gekozenVrijePlaatsen));
+
+        this.submit();
+
+        setReizen(this.reisService.findAllReizen());
+        return "zoekReizen";
+    }
+
     public void submit(){
         this.reisService.insert(newReis);
     }
@@ -88,8 +108,6 @@ public class ReisController implements Serializable{
     public void setReizen(List<Reis> reizen) {
         this.reizen = reizen;
     }
-
-
 
     public void setLijst(List<String> lijst) {
         this.lijst = lijst;

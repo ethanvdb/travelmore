@@ -1,4 +1,6 @@
 $(document).ready(function(){
+
+
     $(".reis-zoek").hide();
     $(".reis-filter").hide();
 

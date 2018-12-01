@@ -9,6 +9,7 @@
 <link rel="stylesheet" type="text/css" href="css/style.css"/>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="js/travelmore.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <h:head><title>Travel More</title></h:head>
 
@@ -51,7 +52,7 @@
                     Filter op uw wensen om uw reis te vinden
                 </p>
                 <p>
-                    <h:form styleClass="inline">
+                    <h:form id="filterForm" styleClass="inline">
                         <div class="form-group">
                             <label for="bestemming">Bestemming</label>
                             <h:selectOneMenu styleClass="form-control" id="bestemming" binding="#{gekozenBestemming}" >
@@ -80,11 +81,11 @@
                             </h:inputText>
 
                             <h:commandButton styleClass="form-control" value="Filter" action="#{reisController.filterReizen(
-                gekozenBestemming.value,
-                gekozenVertrekplaats.value,
-                gekozenTransportmiddel.value,
-                gekozenPrijs.value,
-                gekozenVrijePlaatsen.value)}"/>
+                                    gekozenBestemming.value,
+                                    gekozenVertrekplaats.value,
+                                    gekozenTransportmiddel.value,
+                                    gekozenPrijs.value,
+                                    gekozenVrijePlaatsen.value)}"/>
                         </div>
                     </h:form>
                 </p>
