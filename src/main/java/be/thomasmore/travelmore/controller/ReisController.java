@@ -97,6 +97,18 @@ public class ReisController implements Serializable{
         return "zoekReizen";
     }
 
+    public String deleteReis(int reisId){
+        /*Reis reis = this.reisService.findReisById(reisId);
+        this.reisService.delete(reis);*/
+
+        //setReizen(this.reisService.findAllReizen());
+        return "login";
+    }
+
+    public void deleteReis(){
+
+    }
+
     public void submit(){
         this.reisService.insert(newReis);
     }

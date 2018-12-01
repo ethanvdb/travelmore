@@ -44,4 +44,8 @@ public class ReisService {
     public void insert(Reis reis) {
         reisRepository.insert(reis);
     }
+
+    public void delete(Reis reis){
+        reisRepository.delete(reis);
+    }
 }

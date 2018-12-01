@@ -106,6 +106,9 @@
                                     <h6 class="card-subtitle mb-2">Prijs: #{tempReis.prijs} euro</h6>
                                     <h6 class="card-subtitle mb-2 text-muted">#{tempReis.bestemming.naam} - #{tempReis.bestemming.land.naam}</h6>
                                     <a href="#" class="btn btn-dark">Meer info</a>
+                                    <h:form>
+                                        <h:commandButton action="#{reisController.getAllReizen}" value="Delete Reis" styleClass="btn btn-danger"/>
+                                    </h:form>
                                 </div>
                             </div>
                         </div>

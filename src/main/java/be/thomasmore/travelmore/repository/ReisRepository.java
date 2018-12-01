@@ -41,4 +41,8 @@ public class ReisRepository {
     public void insert(Reis reis) {
         entityManager.persist(reis);
     }
+
+    public void delete(Reis reis) {
+        entityManager.remove(reis);
+    }
 }
