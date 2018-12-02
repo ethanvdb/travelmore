@@ -31,7 +31,7 @@
                     </li>
                     <li class="nav-item active">
                         <h:form>
-                            <h:commandLink action="#{reisController.getAllReizen}" value="Bekijk alle reizen" styleClass="nav-link"/>
+                            <h:commandLink action="#{reisController.nieuweReis}" value="Bekijk alle reizen" styleClass="nav-link"/>
                         </h:form>
                     </li>
                     <li class="nav-item">
@@ -94,25 +94,27 @@
 
 
         <div class="album py-5">
+
             <div class="container">
                 <h1 class="display-3 text-center">Reizen</h1>
                 <div class="row py-5">
-                    <ui:repeat value="#{reisController.reizen}" var="tempReis">
-                        <div class="col-md-4">
-                            <div class="card mb-4 shadow-sm">
-                                <img class="card-img-top" src="images/standaard.jpg" alt="Card image cap"/>
-                                <div class="card-body">
-                                    <h5 class="card-title">#{tempReis.naam}</h5>
-                                    <h6 class="card-subtitle mb-2">Prijs: #{tempReis.prijs} euro</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">#{tempReis.bestemming.naam} - #{tempReis.bestemming.land.naam}</h6>
-                                    <a href="#" class="btn btn-dark">Meer info</a>
-                                    <h:form>
-                                        <h:commandButton action="#{reisController.getAllReizen}" value="Delete Reis" styleClass="btn btn-danger"/>
-                                    </h:form>
+                    <h:form id="deleteForm">
+                        <ui:repeat value="#{reisController.reizen}" var="tempReis">
+                            <div class="col-md-4">
+                                <div class="card mb-4 shadow-sm">
+                                    <img class="card-img-top" src="images/standaard.jpg" alt="Card image cap"/>
+                                    <div class="card-body">
+                                        <h5 class="card-title">#{tempReis.naam}</h5>
+                                        <h6 class="card-subtitle mb-2">Prijs: #{tempReis.prijs} euro</h6>
+                                        <h6 class="card-subtitle mb-2 text-muted">#{tempReis.bestemming.naam} - #{tempReis.bestemming.land.naam}</h6>
+                                        <a href="#" class="btn btn-dark">Meer info</a>
+                                        <h:commandButton action="#{reisController.deleteReis(tempReis.id)}" value="Delete reis" styleClass="form-control btn-danger"/>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </ui:repeat>
+                        </ui:repeat>
+                    </h:form>
+
                 </div>
             </div>
         </div>

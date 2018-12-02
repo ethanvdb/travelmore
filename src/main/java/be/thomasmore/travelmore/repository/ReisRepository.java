@@ -43,6 +43,6 @@ public class ReisRepository {
     }
 
     public void delete(Reis reis) {
-        entityManager.remove(reis);
+        entityManager.remove(entityManager.contains(reis) ? reis : entityManager.merge(reis));
     }
 }

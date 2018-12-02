@@ -111,7 +111,7 @@ public class PersoonController {
     }
 
     public String addPersoon(String voorNaam, String naam, String email, String password1, String password2){
-        if (password1 == password2){
+        if (password1.equals(password2)){
             this.newPersoon.setVoorNaam(voorNaam);
             this.newPersoon.setNaam(naam);
             this.newPersoon.setEmail(email);
