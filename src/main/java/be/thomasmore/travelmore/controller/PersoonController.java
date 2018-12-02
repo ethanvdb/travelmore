@@ -115,7 +115,7 @@ public class PersoonController {
             this.newPersoon.setVoorNaam(voorNaam);
             this.newPersoon.setNaam(naam);
             this.newPersoon.setEmail(email);
-            this.newPersoon.setWachtwoord(password1);
+            this.newPersoon.setWachtwoord(trippleDes.encrypt(password1));
 
             this.submit();
 
