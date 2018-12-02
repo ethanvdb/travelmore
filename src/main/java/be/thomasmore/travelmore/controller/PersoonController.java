@@ -97,6 +97,7 @@ public class PersoonController {
         if (persoon != null){
             //kijken of wachtwoord overeen komt
             if (trippleDes.decrypt(persoon.getWachtwoord()) == wachtwoord){
+                setLogin(persoon);
                 return persoon;
             }
             else {
@@ -106,6 +107,22 @@ public class PersoonController {
         else{
             //persoon bestaat niet
             return null;
+        }
+    }
+
+    public String addPersoon(String voorNaam, String naam, String email, String password1, String password2){
+        if (password1 == password2){
+            this.newPersoon.setVoorNaam(voorNaam);
+            this.newPersoon.setNaam(naam);
+            this.newPersoon.setEmail(email);
+            this.newPersoon.setWachtwoord(password1);
+
+            this.submit();
+
+            return "login";
+        }
+        else {
+            return "registreren";
         }
     }
 }
