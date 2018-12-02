@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+<link rel="stylesheet" type="text/css" href="css/style.css"/>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/travelmore.js"></script>
+
+<h:head>
+    <title>Travel More - Registreren</title>
+</h:head>
+
+<h:body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="index.xhtml"><img src="images/travelmore.png" alt="" srcset="" class="afbeelding" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.xhtml">Home</a>
+                    </li>
+                    <li class="nav-item zoeken-menuknop">
+                        <a class="nav-link" href="#">Reizen zoeken</a>
+                    </li>
+                    <li class="nav-item">
+                        <h:form>
+                            <h:commandLink action="#{reisController.getAllReizen}" value="Bekijk alle reizen" styleClass="nav-link"/>
+                        </h:form>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Boeken</a>
+                    </li>
+                </ul>
+                <a class="nav-link" href="login.xhtml">Login</a>
+            </div>
+        </nav>
+    </header>
+
+    <div id="LoginForm">
+        <div class="container">
+            <h1 class="form-heading">Welkom op de registreer-pagina</h1>
+            <div class="login-form">
+                <div class="main-div">
+                    <div class="panel">
+                        <h2>Registreren</h2>
+                        <p>Gelieve uw email en wachtwoord op te geven</p>
+                    </div>
+
+                    <h:form id="Register">
+                        <div class="form-group">
+                            <!--<input type="text" class="form-control" binding="#{Voornaam}" id="inputVoornaam" placeholder="Voornaam"></input>-->
+                            <h:inputText styleClass="form-control" id="inputVoornaam" binding="#{Voornaam}" placeholder="Voornaam"></h:inputText>
+                        </div>
+                        <div class="form-group">
+                            <!--<input type="text" class="form-control" binding="#{Naam}" id="inputNaam" placeholder="Naam"></input>-->
+                            <h:inputText styleClass="form-control" id="inputNaam" binding="#{Naam}" placeholder="Naam"></h:inputText>
+                        </div>
+                        <div class="form-group">
+                            <!--<input type="email" class="form-control" binding="#{Email}" id="inputEmail" placeholder="Email"></input>-->
+                            <h:inputText styleClass="form-control" id="inputEmail" binding="#{Email}" placeholder="Email"></h:inputText>
+                        </div>
+                        <div class="form-group">
+                            <!--<input type="password" class="form-control" binding="#{Password1}" id="inputPassword1" placeholder="Wachtwoord"></input>-->
+                            <h:inputSecret styleClass="form-control" id="inputPassword1" binding="#{Password1}" placeholder="Wachtwoord"></h:inputSecret>
+                        </div>
+                        <div class="form-group">
+                            <!--<input type="password" class="form-control" binding="#{Password2}" id="inputPassword2" placeholder="Wachtwoord bevestigen"></input>-->
+                            <h:inputSecret styleClass="form-control" id="inputPassword2" binding="#{Password2}" placeholder="Wachtwoord bevestigen"></h:inputSecret>
+                        </div>
+                        <h:commandButton styleClass="btn btn-primary" value="Creëer uw account" action="#{persoonController.addPersoon(
+                                    Voornaam.value,
+                                    Naam.value,
+                                    Email.value,
+                                    Password1.value,
+                                    Password2.value)}"/>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--<h:dataTable value="#{reisController.getReizen()}" var="tempReis">-->
+        <!--<h:column>-->
+            <!--<f:facet name="header">Id</f:facet>-->
+            <!--Tafel - #{tempReis.Id}-->
+        <!--</h:column>-->
+        <!--<h:column>-->
+            <!--<f:facet name="header">Naam</f:facet>-->
+            <!--#{tempReis.naam}-->
+        <!--</h:column>-->
+        <!--<h:column>-->
+            <!--<f:facet name="header">Datum</f:facet>-->
+            <!--#{tempReis.beginDatum}-->
+        <!--</h:column>-->
+        <!--<h:column>-->
+            <!--<f:facet name="header">Prijs</f:facet>-->
+            <!--#{tempReis.prijs}-->
+        <!--</h:column>-->
+    <!--</h:dataTable>-->
+
+
+</h:body>
+</html>
