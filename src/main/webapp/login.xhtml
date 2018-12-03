@@ -53,19 +53,17 @@
                         <p>Gelieve uw email en wachtwoord op te geven</p>
                     </div>
 
-                    <form action="index.xhtml" id="Login">
+                    <h:form id="login">
                         <div class="form-group">
-                            <input type="email" class="form-control" id="inputEmail" placeholder="Email"></input>
+                            <h:inputText styleClass="form-control" id="inputEmail" binding="#{Email}" placeholder="Email"></h:inputText>
                         </div>
-
                         <div class="form-group">
-                            <input type="password" class="form-control" id="inputPassword" placeholder="Wachtwoord"></input>
+                            <h:inputSecret styleClass="form-control" id="inputPassword" binding="#{Password}" placeholder="Wachtwoord"></h:inputSecret>
                         </div>
-                        <!--<div class="forgot">-->
-                            <!--<a href="reset.html">Forgot password?</a>-->
-                        <!--</div>-->
-                        <button type="submit" class="btn btn-primary">Login</button>
-                    </form>
+                        <h:commandButton styleClass="btn btn-primary" value="Creëer uw account" action="#{persoonController.checkLogin(
+                                    Email.value,
+                                    Password.value)}"/>
+                    </h:form>
                 </div>
 
                 <div class="main-div">
@@ -81,26 +79,5 @@
             </div>
         </div>
     </div>
-
-    <!--<h:dataTable value="#{reisController.getReizen()}" var="tempReis">-->
-        <!--<h:column>-->
-            <!--<f:facet name="header">Id</f:facet>-->
-            <!--Tafel - #{tempReis.Id}-->
-        <!--</h:column>-->
-        <!--<h:column>-->
-            <!--<f:facet name="header">Naam</f:facet>-->
-            <!--#{tempReis.naam}-->
-        <!--</h:column>-->
-        <!--<h:column>-->
-            <!--<f:facet name="header">Datum</f:facet>-->
-            <!--#{tempReis.beginDatum}-->
-        <!--</h:column>-->
-        <!--<h:column>-->
-            <!--<f:facet name="header">Prijs</f:facet>-->
-            <!--#{tempReis.prijs}-->
-        <!--</h:column>-->
-    <!--</h:dataTable>-->
-
-
 </h:body>
 </html>
