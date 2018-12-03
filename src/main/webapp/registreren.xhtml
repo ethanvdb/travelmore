@@ -63,22 +63,27 @@
                     <h:form id="Register">
                         <div class="form-group">
                             <!--<input type="text" class="form-control" binding="#{Voornaam}" id="inputVoornaam" placeholder="Voornaam"></input>-->
+                            <label for="inputVoornaam">Voornaam</label>
                             <h:inputText styleClass="form-control" id="inputVoornaam" binding="#{Voornaam}" placeholder="Voornaam"></h:inputText>
                         </div>
                         <div class="form-group">
                             <!--<input type="text" class="form-control" binding="#{Naam}" id="inputNaam" placeholder="Naam"></input>-->
+                            <label for="inputNaam">Naam</label>
                             <h:inputText styleClass="form-control" id="inputNaam" binding="#{Naam}" placeholder="Naam"></h:inputText>
                         </div>
                         <div class="form-group">
                             <!--<input type="email" class="form-control" binding="#{Email}" id="inputEmail" placeholder="Email"></input>-->
+                            <label for="inputEmail">Email</label>
                             <h:inputText styleClass="form-control" id="inputEmail" binding="#{Email}" placeholder="Email"></h:inputText>
                         </div>
                         <div class="form-group">
                             <!--<input type="password" class="form-control" binding="#{Password1}" id="inputPassword1" placeholder="Wachtwoord"></input>-->
+                            <label for="inputPassword1">Wachtwoord</label>
                             <h:inputSecret styleClass="form-control" id="inputPassword1" binding="#{Password1}" placeholder="Wachtwoord"></h:inputSecret>
                         </div>
                         <div class="form-group">
                             <!--<input type="password" class="form-control" binding="#{Password2}" id="inputPassword2" placeholder="Wachtwoord bevestigen"></input>-->
+                            <label for="inputPassword2">Wachtwoord bevestigen</label>
                             <h:inputSecret styleClass="form-control" id="inputPassword2" binding="#{Password2}" placeholder="Wachtwoord bevestigen"></h:inputSecret>
                         </div>
                         <h:commandButton styleClass="btn btn-primary" value="Creëer uw account" action="#{persoonController.addPersoon(
