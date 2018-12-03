@@ -7,6 +7,7 @@ import be.thomasmore.travelmore.service.PlaatsService;
 import be.thomasmore.travelmore.service.ReisService;
 import be.thomasmore.travelmore.service.TransportmiddelService;
 import com.sun.mail.imap.Rights;
+import javax.annotation.PostConstruct;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -21,6 +22,7 @@ import java.util.List;
 @SessionScoped
 public class ReisController implements Serializable{
     private Reis newReis = new Reis();
+    private Reis currentReis;
     private List<Reis> reizen;
     private List<String> lijst = new ArrayList<String>();
 
@@ -30,6 +32,11 @@ public class ReisController implements Serializable{
     private TransportmiddelService transportmiddelService;
     @EJB
     private PlaatsService plaatsService;
+
+    @PostConstruct
+    public void init() {
+        reizen = reisService.findAllReizen();
+    }
 
     public Reis getNewReis() {
         return newReis;
@@ -104,11 +111,13 @@ public class ReisController implements Serializable{
         }
 
         setReizen(this.reisService.findAllReizen());
+
         return "zoekReizen";
     }
 
-    public void deleteReis(){
-
+    public String reisDetails(int reisId){
+        setCurrentReis(this.reisService.findReisById(reisId));
+        return "reisDetails";
     }
 
     public void submit(){
@@ -144,6 +153,11 @@ public class ReisController implements Serializable{
         return "index";
     }
 
+    public Reis getCurrentReis() {
+        return currentReis;
+    }
 
-
+    public void setCurrentReis(Reis currentReis) {
+        this.currentReis = currentReis;
+    }
 }

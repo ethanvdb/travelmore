@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+<link rel="stylesheet" type="text/css" href="css/style.css"/>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/travelmore.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<h:head><title>Travel More</title></h:head>
+
+<h:body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="index.xhtml"><img src="images/travelmore.png" alt="" srcset="" class="afbeelding" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.xhtml">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item zoeken-menuknop">
+                        <a class="nav-link" href="#">Reizen zoeken op bestemming</a>
+                    </li>
+                    <li class="nav-item active">
+                        <h:form>
+                            <h:commandLink action="#{reisController.nieuweReis}" value="Bekijk alle reizen" styleClass="nav-link"/>
+                        </h:form>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Boeken</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main role="main" class="bg-light">
+
+
+        <div class="album py-5">
+            <div class="container">
+                <h1 class="display-3 text-center">#{reisController.currentReis.naam}</h1>
+                <div class="row py-5">
+                            <div class="col-md-8">
+                                <div class="card mb-8 shadow-sm">
+                                    <img class="card-img-top" src="images/standaard.jpg" alt="Card image cap"/>
+                                    <div class="card-body">
+                                        <h6 class="card-subtitle mb-2">Prijs:
+                                            <span class="text-muted">#{reisController.currentReis.prijs}</span> euro</h6>
+                                        <h6 class="card-subtitle mb-2">Vertrekplaats:
+                                            <span class="text-muted">#{reisController.currentReis.vertrekPlaats.naam} - #{reisController.currentReis.vertrekPlaats.land.naam}</span></h6>
+                                        <h6 class="card-subtitle mb-2">Vertrekplaats:
+                                            <span class="text-muted">#{reisController.currentReis.bestemming.naam} - #{reisController.currentReis.bestemming.land.naam}</span></h6>
+                                        <h6 class="card-subtitle mb-2">Transportmiddel:
+                                            <span class="text-muted">#{reisController.currentReis.transportmiddel.soort}</span></h6>
+                                        <h6 class="card-subtitle mb-2">Vrije plaatsen:
+                                            <span class="text-muted">#{reisController.currentReis.maxPlaatsen}</span></h6>
+                                        <h:form>
+                                            <h:commandButton value="Boek nu!" styleClass="btn btn-success" action=""/>
+                                        </h:form>
+                                    </div>
+
+                                </div>
+                            </div>
+                </div>
+            </div>
+        </div>
+
+
+    </main>
+
+
+
+</h:body>
+
+</html>
