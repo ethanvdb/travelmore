@@ -2,6 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
                 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
@@ -94,11 +95,9 @@
 
 
         <div class="album py-5">
-
             <div class="container">
                 <h1 class="display-3 text-center">Reizen</h1>
                 <div class="row py-5">
-                    <h:form id="deleteForm">
                         <ui:repeat value="#{reisController.reizen}" var="tempReis">
                             <div class="col-md-4">
                                 <div class="card mb-4 shadow-sm">
@@ -107,14 +106,16 @@
                                         <h5 class="card-title">#{tempReis.naam}</h5>
                                         <h6 class="card-subtitle mb-2">Prijs: #{tempReis.prijs} euro</h6>
                                         <h6 class="card-subtitle mb-2 text-muted">#{tempReis.bestemming.naam} - #{tempReis.bestemming.land.naam}</h6>
-                                        <a href="#" class="btn btn-dark">Meer info</a>
-                                        <h:commandButton action="#{reisController.deleteReis(tempReis.id)}" value="Delete reis" styleClass="form-control btn-danger"/>
+                                        <h:form>
+                                            <h:commandButton action="#{reisController.reisDetails(tempReis.id)}" value="Meer info" styleClass="btn btn-dark"/>
+                                        </h:form>
+                                        <h:form>
+                                            <h:commandButton action="#{reisController.deleteReis(tempReis.id)}" value="Delete reis" styleClass="btn btn-danger"/>
+                                        </h:form>
                                     </div>
                                 </div>
                             </div>
                         </ui:repeat>
-                    </h:form>
-
                 </div>
             </div>
         </div>
