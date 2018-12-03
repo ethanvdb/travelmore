@@ -28,6 +28,14 @@ public class Betaalmiddel {
     @Column(name = "soort")
     private String soort;
 
+    public Betaalmiddel(){
+    }
+
+    public Betaalmiddel(String soort)
+    {
+        this.setSoort(soort);
+    }
+
     public int getId() {
         return id;
     }
