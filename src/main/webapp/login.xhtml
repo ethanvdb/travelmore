@@ -63,9 +63,11 @@
 
                     <h:form id="login">
                         <div class="form-group">
+                            <label for="inputEmail">Email</label>
                             <h:inputText styleClass="form-control" id="inputEmail" binding="#{Email}" placeholder="Email"></h:inputText>
                         </div>
                         <div class="form-group">
+                            <label for="inputPassword">Wachtwoord</label>
                             <h:inputSecret styleClass="form-control" id="inputPassword" binding="#{Password}" placeholder="Wachtwoord"></h:inputSecret>
                         </div>
                         <h:commandButton styleClass="btn btn-primary" value="Log in" action="#{persoonController.checkLogin(
