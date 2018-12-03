@@ -77,6 +77,16 @@ public class PersoonController {
         this.login = login;
     }
 
+    public String getLoginNaam(){
+        Persoon user = getLogin();
+        if (user != null){
+            return user.getVoorNaam();
+        }
+        else {
+            return "niet ingelogd";
+        }
+    }
+
     //Kijken of er een gebruiker bestaat met de opgegeven email
     public Persoon getPersoonByEmail(String email){
         Persoon persoon = this.persoonService.findPersoonByEmail(email);

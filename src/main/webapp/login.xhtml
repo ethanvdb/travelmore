@@ -45,6 +45,7 @@
                         </h:form>
                     </li>
                 </ul>
+                <p>#{persoonController.login.voorNaam}</p>
                 <a class="nav-link" href="login.xhtml">Login</a>
             </div>
         </nav>
@@ -67,7 +68,7 @@
                         <div class="form-group">
                             <h:inputSecret styleClass="form-control" id="inputPassword" binding="#{Password}" placeholder="Wachtwoord"></h:inputSecret>
                         </div>
-                        <h:commandButton styleClass="btn btn-primary" value="Creëer uw account" action="#{persoonController.checkLogin(
+                        <h:commandButton styleClass="btn btn-primary" value="Log in" action="#{persoonController.checkLogin(
                                     Email.value,
                                     Password.value)}"/>
                     </h:form>
