@@ -106,7 +106,7 @@ public class PersoonController {
         Persoon persoon = getPersoonByEmail(email);
         if (persoon != null){
             //kijken of wachtwoord overeen komt
-            if (trippleDes.decrypt(persoon.getWachtwoord()) == wachtwoord){
+            if (persoon.getWachtwoord() == wachtwoord){
                 setLogin(persoon);
                 return persoon;
             }
@@ -125,7 +125,7 @@ public class PersoonController {
             this.newPersoon.setVoorNaam(voorNaam);
             this.newPersoon.setNaam(naam);
             this.newPersoon.setEmail(email);
-            this.newPersoon.setWachtwoord(trippleDes.encrypt(password1));
+            this.newPersoon.setWachtwoord(password1);
 
             this.submit();
 
