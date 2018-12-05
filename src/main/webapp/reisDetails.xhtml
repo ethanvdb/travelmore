@@ -49,27 +49,38 @@
             <div class="container">
                 <h1 class="display-3 text-center">#{reisController.currentReis.naam}</h1>
                 <div class="row py-5">
-                            <div class="col-md-8">
-                                <div class="card mb-8 shadow-sm">
-                                    <img class="card-img-top" src="images/standaard.jpg" alt="Card image cap"/>
-                                    <div class="card-body">
-                                        <h6 class="card-subtitle mb-2">Prijs:
-                                            <span class="text-muted">#{reisController.currentReis.prijs}</span> euro</h6>
-                                        <h6 class="card-subtitle mb-2">Vertrekplaats:
-                                            <span class="text-muted">#{reisController.currentReis.vertrekPlaats.naam} - #{reisController.currentReis.vertrekPlaats.land.naam}</span></h6>
-                                        <h6 class="card-subtitle mb-2">Vertrekplaats:
-                                            <span class="text-muted">#{reisController.currentReis.bestemming.naam} - #{reisController.currentReis.bestemming.land.naam}</span></h6>
-                                        <h6 class="card-subtitle mb-2">Transportmiddel:
-                                            <span class="text-muted">#{reisController.currentReis.transportmiddel.soort}</span></h6>
-                                        <h6 class="card-subtitle mb-2">Vrije plaatsen:
-                                            <span class="text-muted">#{reisController.currentReis.maxPlaatsen}</span></h6>
-                                        <h:form>
-                                            <h:commandButton value="Boek nu!" styleClass="btn btn-success" action=""/>
-                                        </h:form>
+                    <div class="card col-md-12">
+                        <div class="row">
+                            <div class="col-md-7 nopadding" style="overflow: hidden">
+                                <img src="images/standaard.jpg" alt="Card image cap"/>
+                            </div>
+                            <div class="col-md-5 nopadding">
+                                <div class="card-body">
+                                    <div>
+                                        <h5 class="card-subtitle mb-2">Prijs:
+                                            <span class="text-muted">#{reisController.currentReis.prijs}</span> euro</h5>
                                     </div>
-
+                                    <div>
+                                        <h5 class="card-subtitle mb-2">Vertrekplaats:
+                                            <span class="text-muted">#{reisController.currentReis.vertrekPlaats.naam} - #{reisController.currentReis.vertrekPlaats.land.naam}</span></h5>
+                                    </div>
+                                    <div>
+                                        <h5 class="card-subtitle mb-2">Vertrekplaats:
+                                            <span class="text-muted">#{reisController.currentReis.bestemming.naam} - #{reisController.currentReis.bestemming.land.naam}</span></h5>
+                                    </div>
+                                    <div>
+                                        <h5 class="card-subtitle mb-2">Transportmiddel:
+                                            <span class="text-muted">#{reisController.currentReis.transportmiddel.soort}</span></h5>
+                                    </div>
+                                    <div>
+                                        <h5 class="card-subtitle mb-2">Vrije plaatsen:
+                                            <span class="text-muted">#{reisController.currentReis.maxPlaatsen}</span></h5>
+                                    </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

@@ -110,6 +110,9 @@
                                             <h:commandButton action="#{reisController.reisDetails(tempReis.id)}" value="Meer info" styleClass="btn btn-dark"/>
                                         </h:form>
                                         <h:form>
+                                            <h:commandButton action="#{reisController.editReis(tempReis.id)}" value="Edit Reis" styleClass="btn btn-primary"/>
+                                        </h:form>
+                                        <h:form>
                                             <h:commandButton action="#{reisController.deleteReis(tempReis.id)}" value="Delete reis" styleClass="btn btn-danger"/>
                                         </h:form>
                                     </div>
