@@ -20,8 +20,9 @@ public class PersoonController {
 
     private Persoon newPersoon = new Persoon();
     private Persoon login;
-    private TrippleDes trippleDes;
 
+    //Klasse voor encryptie
+    private TrippleDes trippleDes;
     {
         try {
             trippleDes = new TrippleDes();
