@@ -20,7 +20,7 @@ import java.util.List;
 public class PersoonController {
 
     private Persoon newPersoon = new Persoon();
-    private Persoon login;
+    public Persoon login;
     private boolean bool = false;
 
     //Klasse voor encryptie
@@ -78,9 +78,9 @@ public class PersoonController {
 
     public void setLogin(Persoon login) {
 
-        if (this.login != null){
-            System.out.println(this.login.getVoorNaam());
+        if (login != null){
             this.login = login;
+            System.out.println(this.login.getVoorNaam());
             this.bool = true;
         } else {
             System.out.println("KAPOT");
@@ -92,9 +92,10 @@ public class PersoonController {
     }
 
     public String getLoginNaam(){
-        Persoon user = this.login;
-        if (user     != null){
-            return user.getVoorNaam();
+
+        if (this.login != null){
+            System.out.println(this.login.getVoorNaam());
+            return this.login.getVoorNaam();
         }
         else {
             return "niet ingelogd";
@@ -127,7 +128,7 @@ public class PersoonController {
                      System.out.println("ENDPERSOON");
                 setLogin(persoon);
 
-                return "login";
+                return "ingelogd";
             }
             else {
                 return "index";
