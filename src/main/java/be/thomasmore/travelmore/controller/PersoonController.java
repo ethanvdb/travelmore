@@ -11,6 +11,7 @@ import be.thomasmore.travelmore.TrippleDes;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
+import javax.persistence.PersistenceContext;
 import javax.validation.constraints.Null;
 import java.util.List;
 
@@ -20,6 +21,7 @@ public class PersoonController {
 
     private Persoon newPersoon = new Persoon();
     private Persoon login;
+    private boolean bool = false;
 
     //Klasse voor encryptie
     private TrippleDes trippleDes;
@@ -75,12 +77,23 @@ public class PersoonController {
     }
 
     public void setLogin(Persoon login) {
-        this.login = login;
+
+        if (this.login != null){
+            System.out.println(this.login.getVoorNaam());
+            this.login = login;
+            this.bool = true;
+        } else {
+            System.out.println("KAPOT");
+        }
+    }
+
+    public boolean getBoolean(){
+        return this.bool;
     }
 
     public String getLoginNaam(){
-        Persoon user = getLogin();
-        if (user != null){
+        Persoon user = this.login;
+        if (user     != null){
             return user.getVoorNaam();
         }
         else {
@@ -108,7 +121,12 @@ public class PersoonController {
         if (persoon != null){
             //kijken of wachtwoord overeen komt
             if (persoon.getWachtwoord().equals(wachtwoord)){
+
+                    System.out.println("PERSOON");
+                    System.out.println(persoon.toString());
+                     System.out.println("ENDPERSOON");
                 setLogin(persoon);
+
                 return "login";
             }
             else {
