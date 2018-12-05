@@ -45,4 +45,8 @@ public class ReisRepository {
     public void delete(Reis reis) {
         entityManager.remove(entityManager.contains(reis) ? reis : entityManager.merge(reis));
     }
+
+    public void update(Reis reis){
+        entityManager.merge(reis);
+    }
 }

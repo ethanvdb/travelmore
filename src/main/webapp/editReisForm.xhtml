@@ -43,60 +43,58 @@
         </nav>
     </header>
 
-    <div id="LoginForm">
-        <div class="container">
-            <h1 class="form-heading">Pas hier een reis aan</h1>
-            <div class="login-form">
-                <div class="main-div">
-                    <div class="panel">
-                        <h2>Pas #{reisController.currentReis.naam} aan</h2>
-
-                    </div>
-                    <h:form id="editReisForm" styleClass="inline">
-                        <div class="form-group">
-                            <label for="naamER">Naam van de reis</label>
-                            <h:inputText value="#{reisController.currentReis.naam}" styleClass="form-control" id="naamER" binding="#{gekozenNaam}">
-                            </h:inputText>
-
-                            <label for="bestemmingER">Bestemming</label>
-                            <h:selectOneMenu value="#{reisController.currentReis.bestemming.id}" styleClass="form-control" id="bestemmingER" binding="#{gekozenBestemming}" >
-                                <f:selectItem itemValue = "" itemLabel = "Kies je bestemming" />
-                                <f:selectItems  value="#{plaatsController.allBestemmingen}" var="b" itemLabel="#{b.toString()}" itemValue="#{b.id}"/>
-                            </h:selectOneMenu>
-
-                            <label for="vertrekplaatsER">Vertrekplaats</label>
-                            <h:selectOneMenu value="#{reisController.currentReis.vertrekPlaats.id}" styleClass="form-control" id="vertrekplaatsER" binding="#{gekozenVertrekplaats}" >
-                                <f:selectItem itemValue = "" itemLabel = "Kies je vertrekplaats" />
-                                <f:selectItems  value="#{plaatsController.allVertrekplaatsen}" var="v" itemLabel="#{v.toString()}" itemValue="#{v.id}"/>
-                            </h:selectOneMenu>
-
-                            <label for="transportmiddelER">Transportmiddel</label>
-                            <h:selectOneMenu value="#{reisController.currentReis.transportmiddel.id}" styleClass="form-control" id="transportmiddelER"  binding="#{gekozenTransportmiddel}" >
-                                <f:selectItem itemValue = "" itemLabel = "Kies je transportmiddel" />
-                                <f:selectItems  value="#{transportmiddelController.transportmiddelen}" var="t" itemLabel="#{t.toString()}" itemValue="#{t.id}"/>
-                            </h:selectOneMenu>
-
-                            <label for="prijsER">Budget</label>
-                            <h:inputText value="#{reisController.currentReis.prijs}" styleClass="form-control" id="prijsER" binding="#{gekozenPrijs}">
-                            </h:inputText>
-
-                            <label for="plaatsenER">Aantal plaatsen</label>
-                            <h:inputText value="#{reisController.currentReis.maxPlaatsen}" styleClass="form-control" id="plaatsenER" binding="#{gekozenVrijePlaatsen}">
-                            </h:inputText>
-
-                            <h:commandButton styleClass="form-control" value="Pas reis aan" action="#{reisController.addReis(
-                                    gekozenNaam.value,
-                                    gekozenBestemming.value,
-                                    gekozenVertrekplaats.value,
-                                    gekozenTransportmiddel.value,
-                                    gekozenPrijs.value,
-                                    gekozenVrijePlaatsen.value)}"/>
+    <c:if test="#{reisController.currentReis != null}">
+        <div id="LoginForm">
+            <div class="container">
+                <h1 class="form-heading">Pas hier een reis aan</h1>
+                <div class="login-form">
+                    <div class="main-div">
+                        <div class="panel">
+                            <h2>Pas #{reisController.currentReis.naam} aan</h2>
                         </div>
-                    </h:form>
+                        <h:form id="editReisForm" styleClass="inline">
+                            <div class="form-group">
+                                <label for="naamER">Naam van de reis</label>
+                                <h:inputText value="#{reisController.currentReis.naam}" styleClass="form-control" id="naamER">
+                                </h:inputText>
+
+                                <label for="bestemmingER">Bestemming</label>
+                                <h:selectOneMenu value="#{reisController.currentReis.bestemming.id}" styleClass="form-control" id="bestemmingER">
+                                    <f:selectItem itemValue = "" itemLabel = "Kies je bestemming" />
+                                    <f:selectItems  value="#{plaatsController.allBestemmingen}" var="b" itemLabel="#{b.toString()}" itemValue="#{b.id}"/>
+                                </h:selectOneMenu>
+
+                                <label for="vertrekplaatsER">Vertrekplaats</label>
+                                <h:selectOneMenu value="#{reisController.currentReis.vertrekPlaats.id}" styleClass="form-control" id="vertrekplaatsER" >
+                                    <f:selectItem itemValue = "" itemLabel = "Kies je vertrekplaats" />
+                                    <f:selectItems  value="#{plaatsController.allVertrekplaatsen}" var="v" itemLabel="#{v.toString()}" itemValue="#{v.id}"/>
+                                </h:selectOneMenu>
+
+                                <label for="transportmiddelER">Transportmiddel</label>
+                                <h:selectOneMenu value="#{reisController.currentReis.transportmiddel.id}" styleClass="form-control" id="transportmiddelER"  >
+                                    <f:selectItem itemValue = "" itemLabel = "Kies je transportmiddel" />
+                                    <f:selectItems  value="#{transportmiddelController.transportmiddelen}" var="t" itemLabel="#{t.toString()}" itemValue="#{t.id}"/>
+                                </h:selectOneMenu>
+
+                                <label for="prijsER">Budget</label>
+                                <h:inputText value="#{reisController.currentReis.prijs}" styleClass="form-control" id="prijsER">
+                                </h:inputText>
+
+                                <label for="plaatsenER">Aantal plaatsen</label>
+                                <h:inputText value="#{reisController.currentReis.maxPlaatsen}" styleClass="form-control" id="plaatsenER">
+                                </h:inputText>
+
+                                <h:inputHidden value="#{reisController.currentReis.id}" binding="#{reisId}" />
+
+                                <h:commandButton styleClass="form-control" value="Pas reis aan" action="#{reisController.updateReis(reisId.value)}"/>
+                            </div>
+                        </h:form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </c:if>
+
 
 
 </h:body>
