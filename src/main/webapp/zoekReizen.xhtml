@@ -27,18 +27,23 @@
                     <li class="nav-item">
                         <a class="nav-link" href="index.xhtml">Home <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item zoeken-menuknop">
-                        <a class="nav-link" href="#">Reizen zoeken op bestemming</a>
-                    </li>
                     <li class="nav-item active">
                         <h:form>
-                            <h:commandLink action="#{reisController.nieuweReis}" value="Bekijk alle reizen" styleClass="nav-link"/>
+                            <h:commandLink action="#{reisController.getAllReizen}" value="Bekijk alle reizen" styleClass="nav-link"/>
                         </h:form>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Boeken</a>
+                        <h:form>
+                            <h:commandLink action="#{reisController.reisBoeken}" value="Boeken" styleClass="nav-link"/>
+                        </h:form>
+                    </li>
+                    <li class="nav-item">
+                        <h:form>
+                            <h:commandLink action="#{reisController.nieuweReis}" value="Nieuwe Reis Aanmaken" styleClass="nav-link"/>
+                        </h:form>
                     </li>
                 </ul>
+                <a class="nav-link" href="login.xhtml">Login</a>
             </div>
         </nav>
     </header>
@@ -74,11 +79,21 @@
                             </h:selectOneMenu>
 
                             <label for="prijs">Budget</label>
-                            <h:inputText styleClass="form-control" id="prijs" binding="#{gekozenPrijs}">
+                            <h:inputText  styleClass="form-control" id="prijs" binding="#{gekozenPrijs}">
                             </h:inputText>
 
                             <label for="plaatsen">Aantal plaatsen</label>
                             <h:inputText styleClass="form-control" id="plaatsen" binding="#{gekozenVrijePlaatsen}">
+                            </h:inputText>
+
+                            <label for="beginDatum">Begindatum (dd/mm/yyyy)</label>
+                            <h:inputText styleClass="form-control" id="beginDatum" binding="#{beginDatum}">
+                                <f:convertDateTime pattern="dd/MM/yyyy"/>
+                            </h:inputText>
+
+                            <label for="eindDatum">Einddatum (dd/mm/yyyy)</label>
+                            <h:inputText styleClass="form-control" id="eindDatum" binding="#{eindDatum}">
+                                <f:convertDateTime pattern="dd/MM/yyyy"/>
                             </h:inputText>
 
                             <h:commandButton styleClass="form-control" value="Filter" action="#{reisController.filterReizen(
@@ -86,7 +101,9 @@
                                     gekozenVertrekplaats.value,
                                     gekozenTransportmiddel.value,
                                     gekozenPrijs.value,
-                                    gekozenVrijePlaatsen.value)}"/>
+                                    gekozenVrijePlaatsen.value,
+                                    beginDatum.value,
+                                    eindDatum.value)}"/>
                         </div>
                     </h:form>
                 </p>

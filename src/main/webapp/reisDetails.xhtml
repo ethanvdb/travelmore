@@ -58,7 +58,7 @@
                                 <div class="card-body">
                                     <div>
                                         <h5 class="card-subtitle mb-2">Prijs:
-                                            <span class="text-muted">#{reisController.currentReis.prijs}</span> euro</h5>
+                                            <span class="text-muted">#{reisController.currentReis.prijs} euro</span></h5>
                                     </div>
                                     <div>
                                         <h5 class="card-subtitle mb-2">Vertrekplaats:
@@ -75,6 +75,17 @@
                                     <div>
                                         <h5 class="card-subtitle mb-2">Vrije plaatsen:
                                             <span class="text-muted">#{reisController.currentReis.maxPlaatsen}</span></h5>
+                                    </div>
+                                    <div>
+                                        <h5 class="card-subtitle mb-2">Periode:
+                                            <span class="text-muted">
+                                                <h:outputText value="#{reisController.currentReis.beginDatum}">
+                                                    <f:convertDateTime pattern="dd/MM/yyyy" />
+                                                </h:outputText> -
+                                                 <h:outputText value="#{reisController.currentReis.eindDatumx}">
+                                                    <f:convertDateTime pattern="dd/MM/yyyy" />
+                                                </h:outputText>
+                                                </span></h5>
                                     </div>
                                 </div>
                             </div>

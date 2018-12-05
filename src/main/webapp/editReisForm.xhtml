@@ -84,6 +84,16 @@
                                 <h:inputText value="#{reisController.currentReis.maxPlaatsen}" styleClass="form-control" id="plaatsenER">
                                 </h:inputText>
 
+                                <label for="beginDatumER">Begindatum (dd/mm/yyyy)</label>
+                                <h:inputText value="#{reisController.currentReis.beginDatum}" styleClass="form-control" id="beginDatumER">
+                                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                </h:inputText>
+
+                                <label for="eindDatumER">Einddatum (dd/mm/yyyy)</label>
+                                <h:inputText value="#{reisController.currentReis.eindDatum}" styleClass="form-control" id="eindDatumER">
+                                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                </h:inputText>
+
                                 <h:inputHidden value="#{reisController.currentReis.id}" binding="#{reisId}" />
 
                                 <h:commandButton styleClass="form-control" value="Pas reis aan" action="#{reisController.updateReis(reisId.value)}"/>

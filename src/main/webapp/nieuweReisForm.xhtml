@@ -83,13 +83,25 @@
                             <h:inputText  styleClass="form-control" id="plaatsenNR" binding="#{nieuweVrijePlaatsen}">
                             </h:inputText>
 
+                            <label for="beginDatumNR">Begindatum (dd/mm/yyyy)</label>
+                            <h:inputText styleClass="form-control" id="beginDatumNR" binding="#{nieuweBeginDatum}">
+                                <f:convertDateTime pattern="dd/MM/yyyy"/>
+                            </h:inputText>
+
+                            <label for="eindDatumNR">Einddatum (dd/mm/yyyy)</label>
+                            <h:inputText styleClass="form-control" id="eindDatumNR" binding="#{nieuweEindDatum}">
+                                <f:convertDateTime pattern="dd/MM/yyyy"/>
+                            </h:inputText>
+
                             <h:commandButton styleClass="form-control" value="Voeg reis toe" action="#{reisController.addReis(
                                     nieuweNaam.value,
                                     nieuweBestemming.value,
                                     nieuweVertrekplaats.value,
                                     nieuweTransportmiddel.value,
                                     nieuwePrijs.value,
-                                    nieuweVrijePlaatsen.value)}"/>
+                                    nieuweVrijePlaatsen.value,
+                                    nieuweBeginDatum.value,
+                                    nieuweEindDatum.value)}"/>
                         </div>
                     </h:form>
                 </div>

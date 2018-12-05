@@ -6,6 +6,7 @@ import be.thomasmore.travelmore.repository.ReisRepository;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import java.util.List;
+import java.util.Date;
 
 @Stateless
 public class ReisService {
@@ -32,8 +33,8 @@ public class ReisService {
         return reisRepository.findAllByLand(land);
     }
 
-    public List<Reis> filterReizen(int bestemmingId, int vertrekplaatsId, int transportmiddelId, int gekozenPrijs, int gekozenVrijePlaatsen){
-        return reisRepository.filterReizen(bestemmingId, vertrekplaatsId, transportmiddelId, gekozenPrijs, gekozenVrijePlaatsen);
+    public List<Reis> filterReizen(int bestemmingId, int vertrekplaatsId, int transportmiddelId, int gekozenPrijs, int gekozenVrijePlaatsen, Date beginDatum, Date eindDatum){
+        return reisRepository.filterReizen(bestemmingId, vertrekplaatsId, transportmiddelId, gekozenPrijs, gekozenVrijePlaatsen, beginDatum, eindDatum);
     }
 
     public void updateNaam(int id, String newNaam) {
