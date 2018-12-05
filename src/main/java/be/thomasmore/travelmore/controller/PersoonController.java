@@ -107,7 +107,7 @@ public class PersoonController {
         Persoon persoon = getPersoonByEmail(email);
         if (persoon != null){
             //kijken of wachtwoord overeen komt
-            if (persoon.getWachtwoord() == wachtwoord){
+            if (persoon.getWachtwoord().equals(wachtwoord)){
                 setLogin(persoon);
                 return "login";
             }
