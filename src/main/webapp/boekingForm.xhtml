@@ -66,6 +66,7 @@
                             <h:selectOneMenu styleClass="form-control" id="betaalmiddel" binding="#{gekozenBetaalmiddel}" >
                                 <f:selectItems  value="#{boekingController.betaalmiddelen}" var="t" itemLabel="#{t.soort}" itemValue="#{t.id}"/>
                             </h:selectOneMenu>
+                            <h:message for="betaalmiddel"/>
 
                             <h5>Nu betalen?</h5>
                             <h:selectOneRadio styleClass="radio-button" binding="#{isBetaald}" >

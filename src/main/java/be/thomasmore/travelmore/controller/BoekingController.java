@@ -32,6 +32,11 @@ public class BoekingController implements Serializable {
     @EJB
     private PersoonService persoonService;
 
+    @PostConstruct
+    public void init() {
+        betaalmiddelen = this.betaalmiddelService.findAllBetaalmiddelen();
+    }
+
     public String reisBoeken(int id){
         setReis(this.reisService.findReisById(id));
         setBetaalmiddelen(this.betaalmiddelService.findAllBetaalmiddelen());
