@@ -51,6 +51,11 @@ public class ReisController implements Serializable{
        return "zoekReizen";
     }
 
+    public String reisBoeken(){
+       setReizen(this.reisService.findAllReizen());
+       return "boeking";
+    }
+
     public String getReizenByPlaats(String plaats){
         setReizen(this.reisService.findAllReizenByPlaats(plaats));
         return "zoekReizen";
