@@ -12,7 +12,7 @@ import javax.persistence.*;
                 ),
                 @NamedQuery(
                         name = Persoon.FIND_BY_EMAIL,
-                        query = "SELECT l FROM Persoon l WHERE l.email = :email"
+                        query = "SELECT p FROM Persoon p WHERE p.email = :email"
                 ),
                 @NamedQuery(
                         name = Persoon.FIND_ALL,
