@@ -46,19 +46,41 @@
         <div class="container">
                 <div class="main-div">
                     <div class="panel">
-                        <h3 class="">U heeft gekozen voor:</h3>
+                        <h4 class="">U heeft gekozen voor:</h4>
                         <h2>#{boekingController.reis.naam}</h2>
                     </div>
 
                     <div class="panel">
-                        <h3>Gelieve uw gegevens in te vullen:</h3>
+                        <h4>Gelieve uw gegevens in te vullen:</h4>
+                        <br/>
                     </div>
-                    <h:form id="boekingForm" styleClass="inline">
-                        <div class="form-group">
-                            <p>Kies je betaalmiddel</p>
-                            <h:selectOneRadio styleClass="radio-button" binding="#{gekozenBetalingsmiddel}" >
-                                <p><f:selectItems value="#{boekingController.betaalmiddelen}" var="t" itemLabel="#{t.soort.toString()}" itemValue="#{t.id}"/></p>
+                    <h:form styleClass="inline">
+                        <div >
+
+                            <h5>Datum van vertrek</h5>
+                            <h:inputText styleClass="form-control" id="datum" binding="#{datum}" >
+                                <f:convertDateTime pattern="yyyy/MM/dd"/>
+                            </h:inputText>
+
+                            <h5>Kies je betaalmiddel</h5>
+                            <h:selectOneMenu styleClass="form-control" id="betaalmiddel" binding="#{gekozenBetaalmiddel}" >
+                                <f:selectItems  value="#{boekingController.betaalmiddelen}" var="t" itemLabel="#{t.soort}" itemValue="#{t.id}"/>
+                            </h:selectOneMenu>
+
+                            <h5>Nu betalen?</h5>
+                            <h:selectOneRadio styleClass="radio-button" binding="#{isBetaald}" >
+                                <p><f:selectItem itemLabel="Ja" itemValue="true"/></p>
+                                <p><f:selectItem itemLabel="Nee" itemValue="false"/></p>
                             </h:selectOneRadio>
+
+                            <h:commandButton styleClass="form-control" value="Boek" action="#{boekingController.addBoeking(
+                                    datum.value,
+                                    isBetaald.value,
+                                    gekozenBetaalmiddel.value)}"/>
+
+                            <h:commandButton styleClass="form-control" value="Annuleren" action="#{reisController.reisBoeken}"/>
+
+                            <!--persoonController.getLogin().id,-->
 
                         </div>
                     </h:form>
