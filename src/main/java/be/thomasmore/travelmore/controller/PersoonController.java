@@ -103,21 +103,21 @@ public class PersoonController {
     }
 
     //Kijken of er een gebruiker bestaat met de opgegeven mail en het juiste wachtwoord
-    public Persoon checkLogin(String email, String wachtwoord){
+    public String checkLogin(String email, String wachtwoord){
         Persoon persoon = getPersoonByEmail(email);
         if (persoon != null){
             //kijken of wachtwoord overeen komt
-            if (persoon.getWachtwoord() == wachtwoord){
+            if (persoon.getWachtwoord().equals(wachtwoord)){
                 setLogin(persoon);
-                return persoon;
+                return "login";
             }
             else {
-                return null;
+                return "index";
             }
         }
         else{
             //persoon bestaat niet
-            return null;
+            return "registreren";
         }
     }
 
