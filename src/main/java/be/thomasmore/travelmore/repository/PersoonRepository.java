@@ -17,7 +17,7 @@ public class PersoonRepository {
 
     public Persoon findByEmail(String email) {
         //return entityManager.find(Persoon.class, email);
-        return entityManager.createNamedQuery(Persoon.FIND_BY_EMAIL, Persoon.class).getSingleResult();
+        return entityManager.createNamedQuery(Persoon.FIND_BY_EMAIL, Persoon.class).setParameter("email", email).getSingleResult();
     }
 
     public List<Persoon> findAll() {
