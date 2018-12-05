@@ -18,6 +18,12 @@ public class AdresRepository {
         return entityManager.createNamedQuery(Adres.FIND_ALL, Adres.class).getResultList();
     }
 
+    public void delete(int id){
+        entityManager.createQuery("delete from Adres l where l.id=:id")
+                .setParameter("id", id)
+                .executeUpdate();
+    }
+
     public Adres findByPostCode(String postCode) {
         return entityManager.createNamedQuery(Adres.FIND_BY_POSTCODE, Adres.class).setParameter("postCode", postCode).getSingleResult();
     }

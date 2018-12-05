@@ -22,21 +22,30 @@ public class AdresRestService{
     @Path("/getadres")
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 
-    public List<Adres> getLocationById(@QueryParam("id") int id) {
+    public List<Adres> getAllAdressen() {
         return adresService.findAllAdressen();
     }
 
+    @DELETE
+    @Path("/{id}")
+    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    public  Response deleteAdres(@PathParam("id") int id, @HeaderParam("Authorization") String auth) {
 
-//    public List<Adres> getAllAdressen(){
-//        return adresService.findAllAdressen();
-//    }
+        if(null ==  adresService.findAdresById(id)){
+            return Response
+                    .status(Response.Status.NOT_FOUND)
+                    .entity("Adres you provided is not found on our system").build();
+        }
+        if (!auth.equals("admin")){
+            return Response
+                    .status(Response.Status.UNAUTHORIZED)
+                    .entity("You are not authorized to delete something").build();
+        }
+        adresService.delete(id);
+        return Response.status(Response.Status.NO_CONTENT).entity("Adres deleted").build();
+    }
 
-//    public Adres getAdresById(@QueryParam("id") int id) {
-//        return adresService.findAdresById(id);
-//    }
-//    public Adres getAdresByPostCode(@QueryParam("postCode") String postCode) {
-//        return adresService.findAdresByPostCode(postCode);
-//    }
 
     @POST
     @Path("/addadres")

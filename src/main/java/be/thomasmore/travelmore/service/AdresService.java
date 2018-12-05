@@ -21,6 +21,10 @@ public class AdresService {
         return adresRepository.findAll();
     }
 
+    public void delete(int id){
+        adresRepository.delete(id);
+    }
+
     public Adres findAdresByPostCode(String postCode) {
         return adresRepository.findByPostCode(postCode);
     }
