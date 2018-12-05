@@ -44,7 +44,7 @@
     </header>
     <main role="main" class="bg-light">
 
-        <p class="open-filter">open filter</p>
+            <p class="open-filter">open filter</p>
 
         <section class="reis-filter jumbotron text-center">
             <div class="container">
@@ -106,6 +106,7 @@
                                         <h5 class="card-title">#{tempReis.naam}</h5>
                                         <h6 class="card-subtitle mb-2">Prijs: #{tempReis.prijs} euro</h6>
                                         <h6 class="card-subtitle mb-2 text-muted">#{tempReis.bestemming.naam} - #{tempReis.bestemming.land.naam}</h6>
+                                        <h6 class="card-subtitle mb-2">Adres: #</h6>
                                         <h:form>
                                             <h:commandButton action="#{reisController.reisDetails(tempReis.id)}" value="Meer info" styleClass="btn btn-dark"/>
                                         </h:form>
