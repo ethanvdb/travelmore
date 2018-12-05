@@ -31,4 +31,14 @@ public class BetaalmiddelController {
     public void submit(){
         this.betaalmiddelService.insert(newBetaalmiddel);
     }
+
+    public String vulBetaalmiddelTabel()
+    {
+        Betaalmiddel visa = new Betaalmiddel("Visa");
+        this.betaalmiddelService.insert(visa);
+        Betaalmiddel paypal = new Betaalmiddel("PayPal");
+        this.betaalmiddelService.insert(paypal);
+
+        return "index";
+    }
 }
