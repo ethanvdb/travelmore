@@ -115,6 +115,11 @@ public class ReisController implements Serializable{
         return "zoekReizen";
     }
 
+    public String editReis(int reisId){
+        setCurrentReis(this.reisService.findReisById(reisId));
+        return "editReisForm";
+    }
+
     public String reisDetails(int reisId){
         setCurrentReis(this.reisService.findReisById(reisId));
         return "reisDetails";
