@@ -117,7 +117,7 @@ public class PersoonController {
         }
         else{
             //persoon bestaat niet
-            return null;
+            return "registreren";
         }
     }
 
