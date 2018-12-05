@@ -11,6 +11,10 @@ import javax.persistence.*;
                         query = "SELECT l FROM Persoon l WHERE l.id = :id"
                 ),
                 @NamedQuery(
+                        name = Persoon.FIND_BY_EMAIL,
+                        query = "SELECT l FROM Persoon l WHERE l.email = :email"
+                ),
+                @NamedQuery(
                         name = Persoon.FIND_ALL,
                         query = "SELECT l FROM Persoon l"
                 )
@@ -20,6 +24,7 @@ import javax.persistence.*;
 public class Persoon {
 
     public static final String FIND_ALL = "Persoon.findAll";
+    public static final String FIND_BY_EMAIL = "Persoon.findByEmail";
     public static final String FIND_BY_ID = "Persoon.findByCode";
 
     @Id
