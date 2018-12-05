@@ -50,47 +50,46 @@
                 <div class="main-div">
                     <div class="panel">
                             <h2>Nieuwe Reis</h2>
-                        <h2>#{reisController.currentReis.naam}</h2>
                     </div>
                     <h:form id="nieuweReisForm" styleClass="inline">
                         <div class="form-group">
                             <label for="naamNR">Naam van de reis</label>
-                            <h:inputText value="#{reisController.currentReis.naam}" styleClass="form-control" id="naamNR" binding="#{gekozenNaam}">
+                            <h:inputText styleClass="form-control" id="naamNR" binding="#{nieuweNaam}">
                             </h:inputText>
 
                             <label for="bestemmingNR">Bestemming</label>
-                            <h:selectOneMenu styleClass="form-control" id="bestemmingNR" binding="#{gekozenBestemming}" >
+                            <h:selectOneMenu styleClass="form-control" id="bestemmingNR" binding="#{nieuweBestemming}" >
                                 <f:selectItem itemValue = "" itemLabel = "Kies je bestemming" />
                                 <f:selectItems  value="#{plaatsController.allBestemmingen}" var="b" itemLabel="#{b.toString()}" itemValue="#{b.id}"/>
                             </h:selectOneMenu>
 
                             <label for="vertrekplaatsNR">Vertrekplaats</label>
-                            <h:selectOneMenu styleClass="form-control" id="vertrekplaatsNR" binding="#{gekozenVertrekplaats}" >
+                            <h:selectOneMenu styleClass="form-control" id="vertrekplaatsNR" binding="#{nieuweVertrekplaats}" >
                                 <f:selectItem itemValue = "" itemLabel = "Kies je vertrekplaats" />
                                 <f:selectItems  value="#{plaatsController.allVertrekplaatsen}" var="v" itemLabel="#{v.toString()}" itemValue="#{v.id}"/>
                             </h:selectOneMenu>
 
                             <label for="transportmiddelNR">Transportmiddel</label>
-                            <h:selectOneMenu styleClass="form-control" id="transportmiddelNR"  binding="#{gekozenTransportmiddel}" >
+                            <h:selectOneMenu styleClass="form-control" id="transportmiddelNR"  binding="#{nieuweTransportmiddel}" >
                                 <f:selectItem itemValue = "" itemLabel = "Kies je transportmiddel" />
                                 <f:selectItems  value="#{transportmiddelController.transportmiddelen}" var="t" itemLabel="#{t.toString()}" itemValue="#{t.id}"/>
                             </h:selectOneMenu>
 
                             <label for="prijsNR">Budget</label>
-                            <h:inputText value="#{reisController.currentReis.prijs}" styleClass="form-control" id="prijsNR" binding="#{gekozenPrijs}">
+                            <h:inputText styleClass="form-control" id="prijsNR" binding="#{nieuwePrijs}">
                             </h:inputText>
 
                             <label for="plaatsenNR">Aantal plaatsen</label>
-                            <h:inputText value="#{reisController.currentReis.maxPlaatsen}" styleClass="form-control" id="plaatsenNR" binding="#{gekozenVrijePlaatsen}">
+                            <h:inputText  styleClass="form-control" id="plaatsenNR" binding="#{nieuweVrijePlaatsen}">
                             </h:inputText>
 
                             <h:commandButton styleClass="form-control" value="Voeg reis toe" action="#{reisController.addReis(
-                                    gekozenNaam.value,
-                                    gekozenBestemming.value,
-                                    gekozenVertrekplaats.value,
-                                    gekozenTransportmiddel.value,
-                                    gekozenPrijs.value,
-                                    gekozenVrijePlaatsen.value)}"/>
+                                    nieuweNaam.value,
+                                    nieuweBestemming.value,
+                                    nieuweVertrekplaats.value,
+                                    nieuweTransportmiddel.value,
+                                    nieuwePrijs.value,
+                                    nieuweVrijePlaatsen.value)}"/>
                         </div>
                     </h:form>
                 </div>

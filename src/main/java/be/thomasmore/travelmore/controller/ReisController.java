@@ -25,6 +25,7 @@ public class ReisController implements Serializable{
     private Reis currentReis;
     private List<Reis> reizen;
     private List<String> lijst = new ArrayList<String>();
+    private int id = 1;
 
     @EJB
     private ReisService reisService;
@@ -36,6 +37,7 @@ public class ReisController implements Serializable{
     @PostConstruct
     public void init() {
         reizen = reisService.findAllReizen();
+        currentReis = reisService.findReisById(this.id);
     }
 
     public Reis getNewReis() {
@@ -47,7 +49,6 @@ public class ReisController implements Serializable{
     }
 
     public String getAllReizen(){
-       setReizen(this.reisService.findAllReizen());
        return "zoekReizen";
     }
 
@@ -90,6 +91,7 @@ public class ReisController implements Serializable{
     }
 
     public String nieuweReis(){
+        setReizen(this.reisService.findAllReizen());
         return "nieuweReisForm";
     }
 
@@ -121,12 +123,22 @@ public class ReisController implements Serializable{
     }
 
     public String editReis(int reisId){
+        setReizen(this.reisService.findAllReizen());
         setCurrentReis(this.reisService.findReisById(reisId));
+        setId(reisId);
         return "editReisForm";
+    }
+
+    public String updateReis(int id){
+        //setCurrentReis(this.reisService.findReisById(id));
+        this.reisService.update(this.currentReis);
+        setReizen(this.reisService.findAllReizen());
+        return "zoekReizen";
     }
 
     public String reisDetails(int reisId){
         setCurrentReis(this.reisService.findReisById(reisId));
+
         return "reisDetails";
     }
 
@@ -169,5 +181,13 @@ public class ReisController implements Serializable{
 
     public void setCurrentReis(Reis currentReis) {
         this.currentReis = currentReis;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

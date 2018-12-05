@@ -48,4 +48,8 @@ public class ReisService {
     public void delete(Reis reis){
         reisRepository.delete(reis);
     }
+
+    public void update(Reis reis){
+        reisRepository.update(reis);
+    }
 }
