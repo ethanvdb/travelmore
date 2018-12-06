@@ -1,5 +1,6 @@
 package be.thomasmore.travelmore.domain;
 
+import javax.inject.Named;
 import javax.persistence.*;
 import javax.persistence.GenerationType;
 import javax.validation.constraints.Size;
@@ -16,6 +17,10 @@ import java.util.Date;
                 @NamedQuery(
                         name = Reis.FIND_BY_LAND,
                         query = "SELECT r FROM Reis r WHERE r.bestemming.land.naam = :land"
+                ),
+                @NamedQuery(
+                        name = Reis.FIND_BY_BESTEMMINGID,
+                        query = "SELECT r FROM Reis r WHERE r.bestemming.id = :id"
                 ),
                 @NamedQuery(
                         name = Reis.FIND_ALL,
@@ -43,6 +48,7 @@ public class Reis {
     public static final String FIND_ALL = "Reis.findAll";
     public static final String FIND_BY_PLAATS = "Reis.findByPlaats";
     public static final String FIND_BY_LAND = "Reis.findByLand";
+    public static final String FIND_BY_BESTEMMINGID = "Reis.findByBestemmingId";
     public static final String FIND_BY_ID = "Reis.findById";
     public static final String FIND_REIS_BY_FILTERS = "Reis.findReisByFilters";
 
