@@ -33,6 +33,10 @@ public class ReisRepository {
         return entityManager.createNamedQuery(Reis.FIND_BY_LAND, Reis.class).setParameter("land", land).getResultList();
     }
 
+    public List<Reis> findByBestemmingId(int bestemmingId){
+        return entityManager.createNamedQuery(Reis.FIND_BY_BESTEMMINGID, Reis.class).setParameter("id", bestemmingId).getResultList();
+    }
+
     public List<Reis> filterReizen(int bestemmingId, int vertrekplaatsId, int transportmiddelId, int gekozenPrijs, int gekozenVrijePlaatsen, Date beginDatum, Date eindDatum){
         return entityManager.createNamedQuery(Reis.FIND_REIS_BY_FILTERS, Reis.class).setParameter("bestemmingid", bestemmingId)
                 .setParameter("vertrekplaatsId", vertrekplaatsId).setParameter("transportmiddelId", transportmiddelId)

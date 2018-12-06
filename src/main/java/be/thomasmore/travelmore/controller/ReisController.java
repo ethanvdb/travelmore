@@ -66,6 +66,15 @@ public class ReisController implements Serializable{
         return "zoekReizen";
     }
 
+    public String getReizenByBestemmingId(int id){
+        setReizen(this.reisService.findReizenByBestemmingId(id));
+        return "zoekReizen";
+    }
+
+    public int getAantalReizenPerBestemming(int bestemmingId){
+        return this.reisService.findReizenByBestemmingId(bestemmingId).size();
+    }
+
     public String filterReizen(int bestemmingId, int vertrekplaatsId, int transportmiddelId, String gekozenPrijs, String gekozenVrijePlaatsen, Date beginDatum, Date eindDatum){
         int gekozenPrijsInt;
         int gekozenVrijePlaatsenInt;
@@ -189,4 +198,7 @@ public class ReisController implements Serializable{
     public void setId(int id) {
         this.id = id;
     }
+
+
+
 }

@@ -33,6 +33,10 @@ public class ReisService {
         return reisRepository.findAllByLand(land);
     }
 
+    public List<Reis> findReizenByBestemmingId(int bestemmingId){
+        return reisRepository.findByBestemmingId(bestemmingId);
+    }
+
     public List<Reis> filterReizen(int bestemmingId, int vertrekplaatsId, int transportmiddelId, int gekozenPrijs, int gekozenVrijePlaatsen, Date beginDatum, Date eindDatum){
         return reisRepository.filterReizen(bestemmingId, vertrekplaatsId, transportmiddelId, gekozenPrijs, gekozenVrijePlaatsen, beginDatum, eindDatum);
     }
