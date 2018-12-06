@@ -74,12 +74,14 @@
                                 <p><f:selectItem itemLabel="Nee" itemValue="false"/></p>
                             </h:selectOneRadio>
 
-                            <h:commandButton styleClass="form-control" value="Boek" action="#{boekingController.addBoeking(
+                            <h:commandButton styleClass="btn btn-primary" value="Boek" action="#{boekingController.addBoeking(
                                     datum.value,
                                     isBetaald.value,
-                                    gekozenBetaalmiddel.value)}"/>
+                                    gekozenBetaalmiddel.value,
+                                    1,
+                                    boekingController.reis.id)}"/>
 
-                            <h:commandButton styleClass="form-control" value="Annuleren" action="#{reisController.reisBoeken}"/>
+                            <h:commandButton styleClass="btn btn-dark" value="Annuleren" action="#{reisController.reisBoeken}"/>
 
                             <!--persoonController.getLogin().id,-->
 

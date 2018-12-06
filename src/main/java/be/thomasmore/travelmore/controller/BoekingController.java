@@ -20,7 +20,7 @@ import java.util.List;
 @SessionScoped
 public class BoekingController implements Serializable {
     private Reis newReis = new Reis();
-    private Boeking newBoeking = new Boeking();
+    private Boeking boeking = new Boeking();
     private List<Betaalmiddel> betaalmiddelen;
 
     @EJB
@@ -38,8 +38,11 @@ public class BoekingController implements Serializable {
     }
 
     public String reisBoeken(int id){
+
         setReis(this.reisService.findReisById(id));
         setBetaalmiddelen(this.betaalmiddelService.findAllBetaalmiddelen());
+
+        System.out.println(id);
         return "boekingForm";
     }
 
@@ -59,21 +62,23 @@ public class BoekingController implements Serializable {
         this.betaalmiddelen = betaalmiddelen;
     }
 
-    public void addBoeking(Date datum, boolean betaald, int betaalmiddelId){
+    public String addBoeking(Date datum, boolean betaald, int betaalmiddelId, int gebruikersId, int reisId){
 
         System.out.println(datum);
         System.out.println(betaald);
         System.out.println(betaalmiddelId);
+        System.out.println(gebruikersId);
+        System.out.println(reisId);
 
-//        this.newBoeking.setReis(this.getReis());
-//        this.newBoeking.setPersoon(this.persoonService.findPersoonById(1));
-//        this.newBoeking.setDatum(datum);
-//        this.newBoeking.setBetaald(betaald);
-//        this.newBoeking.setBetaalmiddel(this.betaalmiddelService.findBetaalmiddelById(betaalmiddelId));
-//
-//        this.boekingService.insert(newBoeking);
+        this.boeking.setReis(this.reisService.findReisById(reisId));
+        this.boeking.setPersoon(this.persoonService.findPersoonById(gebruikersId));
+        this.boeking.setDatum(datum);
+        this.boeking.setBetaald(betaald);
+        this.boeking.setBetaalmiddel(this.betaalmiddelService.findBetaalmiddelById(betaalmiddelId));
 
-//        return "index";
+        this.boekingService.insert(boeking);
+
+        return "index";
     }
 
 }
