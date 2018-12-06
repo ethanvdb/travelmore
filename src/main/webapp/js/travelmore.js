@@ -1,6 +1,4 @@
 $(document).ready(function(){
-
-
     $(".reis-zoek").hide();
     $(".reis-filter").hide();
 
@@ -14,8 +12,9 @@ $(document).ready(function(){
     });
 
     $(".filter-knop").click(function () {
-        $(".reis-filter").slideUp();
-        $(".open-filter").show();
+        $(".reis-filter").slideUp(function(){
+            $(".open-filter").show();
+        });
     });
 
 

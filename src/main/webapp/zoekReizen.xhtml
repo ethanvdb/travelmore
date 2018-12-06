@@ -47,56 +47,56 @@
             </div>
         </nav>
     </header>
-    <main role="main" class="bg-light">
+    <main  role="main" class="bg-light">
+            <button class="open-filter btn btn-success">Open Filter</button>
 
-            <p class="open-filter">open filter</p>
+            <section class="reis-filter bg-white">
+                <button class="filter-knop btn btn-danger">Sluit Filter</button>
+                <div class="container text-center jumbotron">
+                    <h1 class="jombotron-header">Filter uw reis</h1>
+                    <p class="lead text-muted">
+                        Filter op uw wensen om uw reis te vinden
+                    </p>
+                    <p>
+                        <h:form id="filterForm" styleClass="inline">
+                            <div class="form-group">
+                                <label for="bestemming">Bestemming</label>
+                                <h:selectOneMenu styleClass="form-control" id="bestemming" binding="#{gekozenBestemming}" >
+                                    <f:selectItem itemValue = "" itemLabel = "Kies je bestemming" />
+                                    <f:selectItems  value="#{plaatsController.allBestemmingen}" var="b" itemLabel="#{b.toString()}" itemValue="#{b.id}"/>
+                                </h:selectOneMenu>
 
-        <section class="reis-filter jumbotron text-center">
-            <div class="container">
-                <h1 class="jombotron-header">Filter uw reis</h1>
-                <p class="lead text-muted">
-                    Filter op uw wensen om uw reis te vinden
-                </p>
-                <p>
-                    <h:form id="filterForm" styleClass="inline">
-                        <div class="form-group">
-                            <label for="bestemming">Bestemming</label>
-                            <h:selectOneMenu styleClass="form-control" id="bestemming" binding="#{gekozenBestemming}" >
-                                <f:selectItem itemValue = "" itemLabel = "Kies je bestemming" />
-                                <f:selectItems  value="#{plaatsController.allBestemmingen}" var="b" itemLabel="#{b.toString()}" itemValue="#{b.id}"/>
-                            </h:selectOneMenu>
+                                <label for="vertrekplaats">Vertrekplaats</label>
+                                <h:selectOneMenu styleClass="form-control" id="vertrekplaats" binding="#{gekozenVertrekplaats}" >
+                                    <f:selectItem itemValue = "" itemLabel = "Kies je vertrekplaats" />
+                                    <f:selectItems  value="#{plaatsController.allVertrekplaatsen}" var="v" itemLabel="#{v.toString()}" itemValue="#{v.id}"/>
+                                </h:selectOneMenu>
 
-                            <label for="vertrekplaats">Vertrekplaats</label>
-                            <h:selectOneMenu styleClass="form-control" id="vertrekplaats" binding="#{gekozenVertrekplaats}" >
-                                <f:selectItem itemValue = "" itemLabel = "Kies je vertrekplaats" />
-                                <f:selectItems  value="#{plaatsController.allVertrekplaatsen}" var="v" itemLabel="#{v.toString()}" itemValue="#{v.id}"/>
-                            </h:selectOneMenu>
+                                <label for="transportmiddel">Transportmiddel</label>
+                                <h:selectOneMenu styleClass="form-control" id="transportmiddel" binding="#{gekozenTransportmiddel}" >
+                                    <f:selectItem itemValue = "" itemLabel = "Kies je transportmiddel" />
+                                    <f:selectItems  value="#{transportmiddelController.transportmiddelen}" var="t" itemLabel="#{t.toString()}" itemValue="#{t.id}"/>
+                                </h:selectOneMenu>
 
-                            <label for="transportmiddel">Transportmiddel</label>
-                            <h:selectOneMenu styleClass="form-control" id="transportmiddel" binding="#{gekozenTransportmiddel}" >
-                                <f:selectItem itemValue = "" itemLabel = "Kies je transportmiddel" />
-                                <f:selectItems  value="#{transportmiddelController.transportmiddelen}" var="t" itemLabel="#{t.toString()}" itemValue="#{t.id}"/>
-                            </h:selectOneMenu>
+                                <label for="prijs">Budget</label>
+                                <h:inputText  styleClass="form-control" id="prijs" binding="#{gekozenPrijs}">
+                                </h:inputText>
 
-                            <label for="prijs">Budget</label>
-                            <h:inputText  styleClass="form-control" id="prijs" binding="#{gekozenPrijs}">
-                            </h:inputText>
+                                <label for="plaatsen">Aantal plaatsen</label>
+                                <h:inputText styleClass="form-control" id="plaatsen" binding="#{gekozenVrijePlaatsen}">
+                                </h:inputText>
 
-                            <label for="plaatsen">Aantal plaatsen</label>
-                            <h:inputText styleClass="form-control" id="plaatsen" binding="#{gekozenVrijePlaatsen}">
-                            </h:inputText>
+                                <label for="beginDatum">Begindatum (dd/mm/yyyy)</label>
+                                <h:inputText styleClass="form-control" id="beginDatum" binding="#{beginDatum}">
+                                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                </h:inputText>
 
-                            <label for="beginDatum">Begindatum (dd/mm/yyyy)</label>
-                            <h:inputText styleClass="form-control" id="beginDatum" binding="#{beginDatum}">
-                                <f:convertDateTime pattern="dd/MM/yyyy"/>
-                            </h:inputText>
+                                <label for="eindDatum">Einddatum (dd/mm/yyyy)</label>
+                                <h:inputText styleClass="form-control" id="eindDatum" binding="#{eindDatum}">
+                                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                </h:inputText>
 
-                            <label for="eindDatum">Einddatum (dd/mm/yyyy)</label>
-                            <h:inputText styleClass="form-control" id="eindDatum" binding="#{eindDatum}">
-                                <f:convertDateTime pattern="dd/MM/yyyy"/>
-                            </h:inputText>
-
-                            <h:commandButton styleClass="form-control" value="Filter" action="#{reisController.filterReizen(
+                                <h:commandButton styleClass="form-control" value="Filter" action="#{reisController.filterReizen(
                                     gekozenBestemming.value,
                                     gekozenVertrekplaats.value,
                                     gekozenTransportmiddel.value,
@@ -104,17 +104,19 @@
                                     gekozenVrijePlaatsen.value,
                                     beginDatum.value,
                                     eindDatum.value)}"/>
-                        </div>
-                    </h:form>
-                </p>
-            </div>
-        </section>
+                            </div>
+                        </h:form>
+                    </p>
+                </div>
+            </section>
 
 
-        <div class="album py-5">
-            <div class="container">
-                <h1 class="display-3 text-center">Reizen</h1>
-                <div class="row py-5">
+
+
+            <div class="album py-5">
+                <div class="container">
+                    <h1 class="display-3 text-center">Reizen</h1>
+                    <div class="row py-5">
                         <ui:repeat value="#{reisController.reizen}" var="tempReis">
                             <div class="col-md-4">
                                 <div class="card mb-4 shadow-sm">
@@ -137,15 +139,10 @@
                                 </div>
                             </div>
                         </ui:repeat>
+                    </div>
                 </div>
             </div>
-        </div>
-
-
     </main>
-
-
-
 </h:body>
 
 </html>
