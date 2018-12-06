@@ -33,7 +33,7 @@ public class PlaatsRepository {
     }
 
     public List<Plaats> findPopulaireBestemmingen(){
-        return entityManager.createNativeQuery(Plaats.FIND_POPULAIRE_BESTEMMINGEN, Plaats.class).getResultList();
+        return entityManager.createNativeQuery("SELECT * FROM `plaats` WHERE plaats.id in (select bestemming_id from reis) group by id order by (select count(*) from boeking where reis_id in (SELECT id from reis where bestemming_id = plaats.id)) DESC limit 3", Plaats.class).getResultList();
     }
 
     public void insert(Plaats plaats) {

@@ -75,36 +75,18 @@
             <div class="container">
                 <h1 class="display-3 text-center">Populaire Reizen</h1>
                 <div class="row py-5">
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img class="card-img-top" src="images/spanje.jpg" alt="Card image cap"/>
-                            <div class="card-body">
-                                <h5 class="card-title">Spanje</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">23 Reizen</h6>
-                                <a href="#" class="btn btn-dark">Boek nu!</a>
+                    <ui:repeat value="#{plaatsController.populaireBestemmingen}" var="populaire">
+                        <div class="col-md-4">
+                            <div class="card mb-4 shadow-sm">
+                                <img class="card-img-top" src="images/spanje.jpg" alt="Card image cap"/>
+                                <div class="card-body">
+                                    <h5 class="card-title">#{populaire.naam} - #{populaire.land.naam}</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">23 Reizen</h6>
+                                    <a href="#" class="btn btn-dark">Boek nu!</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img class="card-img-top" src="images/italie.jpg" alt="Card image cap"/>
-                            <div class="card-body">
-                                <h5 class="card-title">Italië</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">14 Reizen</h6>
-                                <a href="#" class="btn btn-dark">Boek nu!</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img class="card-img-top" src="images/duitsland.jpg" alt="Card image cap"/>
-                            <div class="card-body">
-                                <h5 class="card-title">Duitsland</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">18 Reizen</h6>
-                                <a href="#" class="btn btn-dark">Boek nu!</a>
-                            </div>
-                        </div>
-                    </div>
+                    </ui:repeat>
                 </div>
             </div>
         </div>
