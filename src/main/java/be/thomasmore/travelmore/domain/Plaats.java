@@ -1,5 +1,6 @@
 package be.thomasmore.travelmore.domain;
 
+import javax.inject.Named;
 import javax.persistence.*;
 import javax.persistence.GenerationType;
 import be.thomasmore.travelmore.domain.Reis;
@@ -28,12 +29,19 @@ import java.util.Date;
                 )
         }
 )
+@NamedNativeQuery(
+        name= Plaats.FIND_POPULAIRE_BESTEMMINGEN,
+        query = "select p from Plaats p where p.id in (SELECT r.bestemming.id from Reis r)" +
+                " group by p.id order by (SELECT count(b) from Boeking b where b.reis.id in " +
+                "(select r.id from Reis r where r.bestemming.id = p.id)) desc limit 3"
+)
 
 public class Plaats {
     public static final String FIND_ALL = "Plaats.findAll";
     public static final String FIND_BY_ID = "Plaats.findById";
     public static final String FIND_ALL_BESTEMMINGEN = "Plaats.findAllBestemmingen";
     public static final String FIND_ALL_VERTREKPLAATSEN = "Plaats.findAllVertrekplaatsen";
+    public static final String FIND_POPULAIRE_BESTEMMINGEN = "Plaats.findPopulaireBestemmingen";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
