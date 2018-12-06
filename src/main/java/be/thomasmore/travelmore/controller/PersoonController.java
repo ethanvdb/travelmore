@@ -78,7 +78,7 @@ public class PersoonController {
 
     public void setLogin(Persoon login) {
 
-        if (!isEmpty(login)){
+        if (login != null){
             this.login = login;
             System.out.println(this.login.getVoorNaam());
             this.bool = true;
@@ -93,7 +93,7 @@ public class PersoonController {
 
     public String getLoginNaam(){
 
-        if (isEmpty(this.login)){
+        if (this.login != null){
             System.out.println(this.login.getVoorNaam());
             return this.login.getVoorNaam();
         }
@@ -102,9 +102,9 @@ public class PersoonController {
         }
     }
 
-    public boolean isEmpty(Persoon login){
-        return login.getNaam() != null && login.getVoorNaam() != null && login.getEmail() != null && login.getWachtwoord() != null;
-    }
+//    public boolean isEmpty(Persoon login){
+//        return login.getNaam() != null && login.getVoorNaam() != null && login.getEmail() != null && login.getWachtwoord() != null;
+//    }
 
     //Kijken of er een gebruiker bestaat met de opgegeven email
     public Persoon getPersoonByEmail(String email){
@@ -135,7 +135,7 @@ public class PersoonController {
                 return "ingelogd";
             }
             else {
-                return "index";
+                return "login";
             }
         }
         else{
