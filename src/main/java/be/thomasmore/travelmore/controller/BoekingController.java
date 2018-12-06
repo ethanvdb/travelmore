@@ -26,10 +26,11 @@ import javax.mail.MessagingException;
 @ManagedBean
 @SessionScoped
 public class BoekingController implements Serializable {
-    private Reis newReis = new Reis();
+    private Reis newReis;
     private Boeking boeking = new Boeking();
     private List<Betaalmiddel> betaalmiddelen;
     private String statusMessage = "";
+    private int reisId = 2;
 
     @EJB
     private ReisService reisService;
@@ -40,17 +41,18 @@ public class BoekingController implements Serializable {
     @EJB
     private PersoonService persoonService;
 
+
     @PostConstruct
     public void init() {
         betaalmiddelen = this.betaalmiddelService.findAllBetaalmiddelen();
+        newReis = reisService.findReisById(this.reisId);
     }
 
     public String reisBoeken(int id){
 
         setReis(this.reisService.findReisById(id));
         setBetaalmiddelen(this.betaalmiddelService.findAllBetaalmiddelen());
-
-        System.out.println(id);
+        setReisId(id);
         return "boekingForm";
     }
 
@@ -70,19 +72,12 @@ public class BoekingController implements Serializable {
         this.betaalmiddelen = betaalmiddelen;
     }
 
-    public String addBoeking(Date datum, boolean betaald, int betaalmiddelId, int gebruikersId, int reisId){
-
-        System.out.println(datum);
-        System.out.println(betaald);
-        System.out.println(betaalmiddelId);
-        System.out.println(gebruikersId);
-        System.out.println(reisId);
-
+    public String addBoeking(boolean betaald, int betaalmiddelId, int gebruikersId, int reisId){
         Persoon gebruiker = persoonService.findPersoonById(gebruikersId);
 
         this.boeking.setReis(this.reisService.findReisById(reisId));
         this.boeking.setPersoon(gebruiker);
-        this.boeking.setDatum(datum);
+        this.boeking.setDatum(new Date());
         this.boeking.setBetaald(betaald);
         this.boeking.setBetaalmiddel(this.betaalmiddelService.findBetaalmiddelById(betaalmiddelId));
 
@@ -99,4 +94,11 @@ public class BoekingController implements Serializable {
         return "index";
     }
 
+    public int getReisId() {
+        return reisId;
+    }
+
+    public void setReisId(int reisId) {
+        this.reisId = reisId;
+    }
 }

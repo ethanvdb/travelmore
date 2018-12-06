@@ -56,12 +56,6 @@
                     </div>
                     <h:form styleClass="inline">
                         <div >
-
-                            <h5>Datum van vertrek</h5>
-                            <h:inputText styleClass="form-control" id="datum" binding="#{datum}" >
-                                <f:convertDateTime pattern="yyyy/MM/dd"/>
-                            </h:inputText>
-
                             <h5>Kies je betaalmiddel</h5>
                             <h:selectOneMenu styleClass="form-control" id="betaalmiddel" binding="#{gekozenBetaalmiddel}" >
                                 <f:selectItems  value="#{boekingController.betaalmiddelen}" var="t" itemLabel="#{t.soort}" itemValue="#{t.id}"/>
@@ -74,12 +68,13 @@
                                 <p><f:selectItem itemLabel="Nee" itemValue="false"/></p>
                             </h:selectOneRadio>
 
+                            <h:inputHidden value="#{boekingController.reis.id}" binding="#{reisId}"/>
+
                             <h:commandButton styleClass="btn btn-primary" value="Boek" action="#{boekingController.addBoeking(
-                                    datum.value,
                                     isBetaald.value,
                                     gekozenBetaalmiddel.value,
                                     1,
-                                    boekingController.reis.id)}"/>
+                                    reisId.value)}"/>
 
                             <h:commandButton styleClass="btn btn-dark" value="Annuleren" action="#{reisController.reisBoeken}"/>
 
