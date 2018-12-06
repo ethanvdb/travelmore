@@ -83,9 +83,16 @@ public class BoekingController implements Serializable {
 
         this.boekingService.insert(boeking);
 
+        String textMail = "Beste "+ gebruiker.getVoorNaam() + " " + gebruiker.getNaam() + "\n" +
+                ", we hebben jouw boeking voor " + this.boeking.getReis().getNaam() + " van " + this.boeking.getReis().getBeginDatum() +
+                " tot " + this.boeking.getReis().getEindDatum() + " naar " + this.boeking.getReis().getBestemming().getNaam() + " - " +
+                this.boeking.getReis().getBestemming().getLand().getNaam() + "goed ontvangen." + "\n" +
+                "Bedankt om te reizen met Travel More!" + "\n" +
+                "We wensen je een prettige vakantie toe.";
+
         try
         {
-            BevestigingService.stuurBevestiging("dieter.verboven@gmail.com", "Bevesting reis bij Travelmore", "Beste "+ gebruiker.getVoorNaam() + " " + gebruiker.getNaam() + ", we hebben jouw boeking goed ontvangen.");
+            BevestigingService.stuurBevestiging(gebruiker.getEmail(), "Bevesting reis bij Travelmore", textMail);
 
         }
         catch(MessagingException ex) {
