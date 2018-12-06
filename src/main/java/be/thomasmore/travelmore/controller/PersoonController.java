@@ -23,15 +23,15 @@ public class PersoonController {
     public Persoon login;
     private boolean bool = false;
 
-    //Klasse voor encryptie
-    private TrippleDes trippleDes;
-    {
-        try {
-            trippleDes = new TrippleDes();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    //Klasse voor encryptie
+//    private TrippleDes trippleDes;
+//    {
+//        try {
+//            trippleDes = new TrippleDes();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     @Inject
     private PersoonService persoonService;
@@ -77,7 +77,6 @@ public class PersoonController {
     }
 
     public void setLogin(Persoon login) {
-
         if (login != null){
             this.login = login;
             System.out.println(this.login.getVoorNaam());

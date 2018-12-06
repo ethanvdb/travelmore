@@ -47,11 +47,14 @@
                         </h:form>
                     </li>
                 </ul>
+                <p>#{persoonController.login.voorNaam}</p>
                 <p>#{persoonController.getLoginNaam()}</p>
                 <a class="nav-link" href="login.xhtml">Login</a>
             </div>
         </nav>
     </header>
+
+
 
     <div class="container">
         <div class="row">
@@ -69,7 +72,7 @@
                                     <!--</div>-->
                                 <!--</div>-->
                                 <div class="userData ml-3">
-                                    <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold"><a href="javascript:void(0);">#{persoonController.login.voorNaam} #{persoonController.login.naam}</a></h2>
+                                    <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold"><a href="javascript:void(0);">#{persoonController.persoonController.getLoginNaam()} #{persoonController.login.naam}</a></h2>
                                 </div>
                                 <div class="ml-auto">
                                     <input type="button" class="btn btn-primary d-none" id="btnDiscard" value="Discard Changes" />
@@ -81,10 +84,10 @@
                             <div class="col-12">
                                 <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link active" id="basicInfo-tab" data-toggle="tab" href="#basicInfo" role="tab" aria-controls="basicInfo" aria-selected="true">Account Info</a>
+                                        <a class="nav-link active" id="basicInfo-tab" data-toggle="tab" href="#basicInfo" role="tab" aria-controls="basicInfo" aria-selected="true">Basic Info</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="connectedServices-tab" data-toggle="tab" href="#connectedServices" role="tab" aria-controls="connectedServices" aria-selected="false">Mijn boekingen</a>
+                                        <a class="nav-link" id="connectedServices-tab" data-toggle="tab" href="#connectedServices" role="tab" aria-controls="connectedServices" aria-selected="false">Connected Services</a>
                                     </li>
                                 </ul>
                                 <div class="tab-content ml-1" id="myTabContent">
@@ -93,56 +96,63 @@
 
                                         <div class="row">
                                             <div class="col-sm-3 col-md-2 col-5">
-                                                <label style="font-weight:bold;">Naam</label>
+                                                <label style="font-weight:bold;">Full Name</label>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                                #{persoonController.login.voorNaam} #{persoonController.login.naam}
                                             </div>
                                         </div>
                                         <hr />
 
                                         <div class="row">
                                             <div class="col-sm-3 col-md-2 col-5">
-                                                <label style="font-weight:bold;">Adres</label>
+                                                <label style="font-weight:bold;">Birth Date</label>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                                <div class="row">
-                                                    #{persoonController.login.adres.straat} #{persoonController.login.adres.nummer}
-                                                </div>
-                                                <div class="row">
-                                                    #{persoonController.login.adres.postCode} #{persoonController.login.adres.plaats}
-                                                </div>
+                                                March 22, 1994.
                                             </div>
                                         </div>
                                         <hr />
 
+
                                         <div class="row">
                                             <div class="col-sm-3 col-md-2 col-5">
-                                                <label style="font-weight:bold;">Gsm</label>
+                                                <label style="font-weight:bold;">Something</label>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                                #{persoonController.login.gsm}
+                                                Something
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Something</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                Something
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Something</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                Something
                                             </div>
                                         </div>
                                         <hr />
 
-                                        <div class="row">
-                                            <div class="col-sm-3 col-md-2 col-5">
-                                                <label style="font-weight:bold;">Telefoon</label>
-                                            </div>
-                                            <div class="col-md-8 col-6">
-                                                #{persoonController.login.telefoon}
-                                            </div>
-                                        </div>
-                                        <hr />
                                     </div>
                                     <div class="tab-pane fade" id="connectedServices" role="tabpanel" aria-labelledby="ConnectedServices-tab">
-                                        Hier kom een lijst met alle boekingen van de ingelogde persoon.
+                                        Facebook, Google, Twitter Account that are connected to this account
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+
                     </div>
+
                 </div>
             </div>
         </div>
