@@ -175,7 +175,7 @@ public class ReisController implements Serializable{
 
 
         Reis reis1 = new Reis("Reis 1", new Date(), new Date(), 20, 300, bus, rome, berlijn);
-        Reis reis2 = new Reis("Reis 1", new Date(), new Date(), 20, 350, vliegtuig, rome, berlijn);
+        Reis reis2 = new Reis("Reis 2", new Date(), new Date(), 20, 350, vliegtuig, rome, berlijn);
 
         this.reisService.insert(reis1);
         this.reisService.insert(reis2);

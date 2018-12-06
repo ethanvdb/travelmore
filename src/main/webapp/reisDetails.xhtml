@@ -87,6 +87,12 @@
                                                 </h:outputText>
                                                 </span></h5>
                                     </div>
+
+                                    <div>
+                                        <h:form>
+                                            <h:commandButton action="#{boekingController.reisBoeken(reisController.currentReis.id)}" value="Boeken" styleClass="btn btn-primary"/>
+                                        </h:form>
+                                    </div>
                                 </div>
                             </div>
                         </div>

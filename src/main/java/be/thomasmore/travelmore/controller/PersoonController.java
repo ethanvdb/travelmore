@@ -5,6 +5,12 @@ import be.thomasmore.travelmore.domain.Persoon;
 import be.thomasmore.travelmore.domain.TypeGebruiker;
 import be.thomasmore.travelmore.service.AdresService;
 import be.thomasmore.travelmore.service.PersoonService;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.RequestDispatcher;
 import be.thomasmore.travelmore.service.TypeGebruikerService;
 import be.thomasmore.travelmore.TrippleDes;
 
@@ -12,7 +18,10 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import javax.persistence.PersistenceContext;
+
+import javax.servlet.RequestDispatcher;
 import javax.validation.constraints.Null;
+import java.io.IOException;
 import java.util.List;
 
 @ManagedBean
@@ -23,15 +32,15 @@ public class PersoonController {
     public Persoon login;
     private boolean bool = false;
 
-    //Klasse voor encryptie
-    private TrippleDes trippleDes;
-    {
-        try {
-            trippleDes = new TrippleDes();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    //Klasse voor encryptie
+//    private TrippleDes trippleDes;
+//    {
+//        try {
+//            trippleDes = new TrippleDes();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     @Inject
     private PersoonService persoonService;
@@ -66,9 +75,6 @@ public class PersoonController {
         this.persoonService.insert(persoon3);
         Persoon persoon4 = new Persoon("Verboven", "Dieter", "dieter.verboven@gmail.com", "admin", "+32140000001", "+32400000001", adresService.findAdresById(3), typeGebruikerService.findTypeGebruikerById(1));
         this.persoonService.insert(persoon4);
-        Persoon persoon5 = new Persoon("Verboven", "Dieter", "dieter.verboven@gmail.com", "admin", "+32140000001", "+32400000001", adresService.findAdresById(4), typeGebruikerService.findTypeGebruikerById(1));
-        this.persoonService.insert(persoon5);
-
         return "index";
     }
 
@@ -77,7 +83,6 @@ public class PersoonController {
     }
 
     public void setLogin(Persoon login) {
-
         if (login != null){
             this.login = login;
             System.out.println(this.login.getVoorNaam());
@@ -104,13 +109,11 @@ public class PersoonController {
 
 //    public boolean isEmpty(Persoon login){
 //        return login.getNaam() != null && login.getVoorNaam() != null && login.getEmail() != null && login.getWachtwoord() != null;
-//    }
+//    }f
 
     //Kijken of er een gebruiker bestaat met de opgegeven email
     public Persoon getPersoonByEmail(String email){
         Persoon persoon = this.persoonService.findPersoonByEmail(email);
-
-        setLogin(null);
 
         if (persoon != null){
             return persoon;
@@ -131,8 +134,8 @@ public class PersoonController {
                     System.out.println(persoon.toString());
                      System.out.println("ENDPERSOON");
                 setLogin(persoon);
-
                 return "ingelogd";
+
             }
             else {
                 return "login";
@@ -143,6 +146,7 @@ public class PersoonController {
             return "registreren";
         }
     }
+
 
     public String addPersoon(String voorNaam, String naam, String email, String password1, String password2){
         if (password1.equals(password2)){
