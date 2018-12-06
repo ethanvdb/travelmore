@@ -61,13 +61,13 @@
                                 <label for="bestemmingER">Bestemming</label>
                                 <h:selectOneMenu value="#{reisController.currentReis.bestemming.id}" styleClass="form-control" id="bestemmingER">
                                     <f:selectItem itemValue = "" itemLabel = "Kies je bestemming" />
-                                    <f:selectItems  value="#{plaatsController.allBestemmingen}" var="b" itemLabel="#{b.toString()}" itemValue="#{b.id}"/>
+                                    <f:selectItems  value="#{plaatsController.plaatsen}" var="b" itemLabel="#{b.toString()}" itemValue="#{b.id}"/>
                                 </h:selectOneMenu>
 
                                 <label for="vertrekplaatsER">Vertrekplaats</label>
                                 <h:selectOneMenu value="#{reisController.currentReis.vertrekPlaats.id}" styleClass="form-control" id="vertrekplaatsER" >
                                     <f:selectItem itemValue = "" itemLabel = "Kies je vertrekplaats" />
-                                    <f:selectItems  value="#{plaatsController.allVertrekplaatsen}" var="v" itemLabel="#{v.toString()}" itemValue="#{v.id}"/>
+                                    <f:selectItems  value="#{plaatsController.plaatsen}" var="v" itemLabel="#{v.toString()}" itemValue="#{v.id}"/>
                                 </h:selectOneMenu>
 
                                 <label for="transportmiddelER">Transportmiddel</label>
