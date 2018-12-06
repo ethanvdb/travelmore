@@ -17,6 +17,8 @@ import javax.faces.bean.ManagedBean;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 //mail sturen
 import javax.enterprise.context.RequestScoped;
@@ -75,6 +77,8 @@ public class BoekingController implements Serializable {
     public String addBoeking(boolean betaald, int betaalmiddelId, int gebruikersId, int reisId){
         Persoon gebruiker = persoonService.findPersoonById(gebruikersId);
 
+        DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+
         this.boeking.setReis(this.reisService.findReisById(reisId));
         this.boeking.setPersoon(gebruiker);
         this.boeking.setDatum(new Date());
@@ -83,11 +87,11 @@ public class BoekingController implements Serializable {
 
         this.boekingService.insert(boeking);
 
-        String textMail = "Beste "+ gebruiker.getVoorNaam() + " " + gebruiker.getNaam() + "\n" +
-                ", we hebben jouw boeking voor " + this.boeking.getReis().getNaam() + " van " + this.boeking.getReis().getBeginDatum() +
-                " tot " + this.boeking.getReis().getEindDatum() + " naar " + this.boeking.getReis().getBestemming().getNaam() + " - " +
-                this.boeking.getReis().getBestemming().getLand().getNaam() + "goed ontvangen." + "\n" +
-                "Bedankt om te reizen met Travel More!" + "\n" +
+        String textMail = "Beste "+ gebruiker.getVoorNaam() + " " + gebruiker.getNaam() +
+                ", we hebben jouw boeking voor " + this.boeking.getReis().getNaam() + " van " + format.format(this.boeking.getReis().getBeginDatum()) +
+                " tot " + format.format(this.boeking.getReis().getEindDatum()) + " naar " + this.boeking.getReis().getBestemming().getNaam() + " - " +
+                this.boeking.getReis().getBestemming().getLand().getNaam() + " goed ontvangen." +
+                "Bedankt om te reizen met Travel More!" +
                 "We wensen je een prettige vakantie toe.";
 
         try

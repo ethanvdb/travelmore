@@ -69,11 +69,12 @@
                             </h:selectOneRadio>
 
                             <h:inputHidden value="#{boekingController.reis.id}" binding="#{reisId}"/>
+                            <h:inputHidden value="#{persoonController.login.id}" binding="#{gebruikerId}"/>
 
                             <h:commandButton styleClass="btn btn-primary" value="Boek" action="#{boekingController.addBoeking(
                                     isBetaald.value,
                                     gekozenBetaalmiddel.value,
-                                    1,
+                                    gebruikerId.value,
                                     reisId.value)}"/>
 
                             <h:commandButton styleClass="btn btn-dark" value="Annuleren" action="#{reisController.reisBoeken}"/>
