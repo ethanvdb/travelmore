@@ -109,8 +109,6 @@ public class PersoonController {
     public Persoon getPersoonByEmail(String email){
         Persoon persoon = this.persoonService.findPersoonByEmail(email);
 
-        setLogin(null);
-
         if (persoon != null){
             return persoon;
         }
