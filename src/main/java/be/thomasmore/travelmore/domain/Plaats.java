@@ -26,14 +26,14 @@ import java.util.Date;
                 @NamedQuery(
                         name= Plaats.FIND_ALL_VERTREKPLAATSEN,
                         query = "select p from Plaats p where p.id IN (SELECT r.vertrekPlaats.id from Reis r)"
-                ),
-                @NamedQuery(
-                        name= Plaats.FIND_POPULAIRE_BESTEMMINGEN,
-                        query = "select p from Plaats p where p.id in (SELECT r.bestemming.id from Reis r)" +
-                                " group by p.id order by (SELECT count(b) from Boeking b where b.reis.id in " +
-                                "(select r.id from Reis r where r.bestemming.id = p.id)) desc limit 3"
                 )
         }
+)
+@NamedNativeQuery(
+        name= Plaats.FIND_POPULAIRE_BESTEMMINGEN,
+        query = "select p from Plaats p where p.id in (SELECT r.bestemming.id from Reis r)" +
+                " group by p.id order by (SELECT count(b) from Boeking b where b.reis.id in " +
+                "(select r.id from Reis r where r.bestemming.id = p.id)) desc limit 3"
 )
 
 public class Plaats {

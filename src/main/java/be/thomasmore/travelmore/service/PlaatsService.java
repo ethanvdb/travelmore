@@ -37,6 +37,10 @@ public class PlaatsService {
         plaats.setNaam(newNaam);
     }
 
+    public List<Plaats> findPopulaireBestemmingen(){
+        return plaatsRepository.findPopulaireBestemmingen();
+    }
+
     public void insert(Plaats plaats) {
         plaatsRepository.insert(plaats);
     }
