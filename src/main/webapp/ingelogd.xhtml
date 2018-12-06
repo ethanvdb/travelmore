@@ -53,8 +53,6 @@
         </nav>
     </header>
 
-
-
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -72,8 +70,6 @@
                                 <!--</div>-->
                                 <div class="userData ml-3">
                                     <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold"><a href="javascript:void(0);">#{persoonController.login.voorNaam} #{persoonController.login.naam}</a></h2>
-                                    <h6 class="d-block"><a href="javascript:void(0)">1,500</a> Video Uploads</h6>
-                                    <h6 class="d-block"><a href="javascript:void(0)">300</a> Blog Posts</h6>
                                 </div>
                                 <div class="ml-auto">
                                     <input type="button" class="btn btn-primary d-none" id="btnDiscard" value="Discard Changes" />
@@ -107,43 +103,38 @@
 
                                         <div class="row">
                                             <div class="col-sm-3 col-md-2 col-5">
-                                                <label style="font-weight:bold;">Birth Date</label>
+                                                <label style="font-weight:bold;">Adres</label>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                                March 22, 1994.
+                                                <div class="row">
+                                                    #{persoonController.login.adres.straat} #{persoonController.login.adres.nummer}
+                                                </div>
+                                                <div class="row">
+                                                    #{persoonController.login.adres.postCode} #{persoonController.login.adres.plaats}
+                                                </div>
                                             </div>
                                         </div>
                                         <hr />
 
-
                                         <div class="row">
                                             <div class="col-sm-3 col-md-2 col-5">
-                                                <label style="font-weight:bold;">Something</label>
+                                                <label style="font-weight:bold;">Gsm</label>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                                Something
-                                            </div>
-                                        </div>
-                                        <hr />
-                                        <div class="row">
-                                            <div class="col-sm-3 col-md-2 col-5">
-                                                <label style="font-weight:bold;">Something</label>
-                                            </div>
-                                            <div class="col-md-8 col-6">
-                                                Something
-                                            </div>
-                                        </div>
-                                        <hr />
-                                        <div class="row">
-                                            <div class="col-sm-3 col-md-2 col-5">
-                                                <label style="font-weight:bold;">Something</label>
-                                            </div>
-                                            <div class="col-md-8 col-6">
-                                                Something
+                                                #{persoonController.login.gsm}
                                             </div>
                                         </div>
                                         <hr />
 
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Telefoon</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                #{persoonController.login.telefoon}
+                                            </div>
+                                        </div>
+                                        <hr />
                                     </div>
                                     <div class="tab-pane fade" id="connectedServices" role="tabpanel" aria-labelledby="ConnectedServices-tab">
                                         Hier kom een lijst met alle boekingen van de ingelogde persoon.
@@ -151,10 +142,7 @@
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
-
                 </div>
             </div>
         </div>
