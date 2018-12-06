@@ -102,6 +102,10 @@ public class PersoonController {
         }
     }
 
+//    public boolean isEmpty(Persoon login){
+//        return login.getNaam() != null && login.getVoorNaam() != null && login.getEmail() != null && login.getWachtwoord() != null;
+//    }
+
     //Kijken of er een gebruiker bestaat met de opgegeven email
     public Persoon getPersoonByEmail(String email){
         Persoon persoon = this.persoonService.findPersoonByEmail(email);
@@ -131,7 +135,7 @@ public class PersoonController {
                 return "ingelogd";
             }
             else {
-                return "index";
+                return "login";
             }
         }
         else{

@@ -58,16 +58,15 @@ public class ReisController implements Serializable{
     }
 
     public String getReizenByPlaats(String plaats){
-        setReizen(this.reisService.findAllReizenByPlaats(plaats));
+        if(plaats.isEmpty()){
+            setReizen(this.reisService.findAllReizen());
+        }else{
+            setReizen(this.reisService.findAllReizenByPlaats(plaats));
+        }
         return "zoekReizen";
     }
 
-    public String getReizenByLand(String land){
-        setReizen(this.reisService.findAllReizenByLand(land));
-        return "zoekReizen";
-    }
-
-    public String filterReizen(int bestemmingId, int vertrekplaatsId, int transportmiddelId, String gekozenPrijs, String gekozenVrijePlaatsen){
+    public String filterReizen(int bestemmingId, int vertrekplaatsId, int transportmiddelId, String gekozenPrijs, String gekozenVrijePlaatsen, Date beginDatum, Date eindDatum){
         int gekozenPrijsInt;
         int gekozenVrijePlaatsenInt;
 
@@ -86,7 +85,7 @@ public class ReisController implements Serializable{
 
 
 
-        setReizen(this.reisService.filterReizen(bestemmingId, vertrekplaatsId, transportmiddelId, gekozenPrijsInt, gekozenVrijePlaatsenInt));
+        setReizen(this.reisService.filterReizen(bestemmingId, vertrekplaatsId, transportmiddelId, gekozenPrijsInt, gekozenVrijePlaatsenInt, beginDatum, eindDatum));
         return "zoekReizen";
     }
 
@@ -95,10 +94,10 @@ public class ReisController implements Serializable{
         return "nieuweReisForm";
     }
 
-    public String addReis(String naam, int bestemmingId, int vertrekplaatsId, int transportmiddelId, String gekozenPrijs, String gekozenVrijePlaatsen){
+    public String addReis(String naam, int bestemmingId, int vertrekplaatsId, int transportmiddelId, String gekozenPrijs, String gekozenVrijePlaatsen, Date beginDatum, Date eindDatum){
         this.newReis.setNaam(naam);
-        this.newReis.setBeginDatum(new Date());
-        this.newReis.setEindDatum(new Date());
+        this.newReis.setBeginDatum(beginDatum);
+        this.newReis.setEindDatum(eindDatum);
         this.newReis.setBestemming(plaatsService.findPlaatsById(bestemmingId));
         this.newReis.setVertrekPlaats(plaatsService.findPlaatsById(vertrekplaatsId));
         this.newReis.setTransportmiddel(transportmiddelService.findTransportmiddelById(transportmiddelId));

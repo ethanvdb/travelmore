@@ -31,7 +31,9 @@ import java.util.Date;
                                 " and (r.vertrekPlaats.id = :vertrekplaatsId or :vertrekplaatsId is null or :vertrekplaatsId = '')" +
                                 " and (r.transportmiddel.id = :transportmiddelId or :transportmiddelId is null or :transportmiddelId = '')" +
                                 " and (r.maxPlaatsen >= :gekozenVrijePlaatsen or :gekozenVrijePlaatsen is null or :gekozenVrijePlaatsen = '')" +
-                                " and (r.prijs <= :gekozenPrijs or :gekozenPrijs is null or :gekozenPrijs = '')"
+                                " and (r.prijs <= :gekozenPrijs or :gekozenPrijs is null or :gekozenPrijs = '')" +
+                                " and (r.beginDatum >= :beginDatum or :beginDatum is null or :beginDatum = '')" +
+                                " and (r.eindDatum <= :eindDatum or :eindDatum is null or :eindDatum = '')"
                 )
 
         }

@@ -64,4 +64,8 @@ public class PlaatsController {
         this.plaatsen = plaatsen;
     }
 
+    public List<Plaats> getPopulaireBestemmingen(){
+        return this.plaatsService.findPopulaireBestemmingen();
+    }
+
 }

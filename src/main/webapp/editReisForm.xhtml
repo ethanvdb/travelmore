@@ -61,13 +61,13 @@
                                 <label for="bestemmingER">Bestemming</label>
                                 <h:selectOneMenu value="#{reisController.currentReis.bestemming.id}" styleClass="form-control" id="bestemmingER">
                                     <f:selectItem itemValue = "" itemLabel = "Kies je bestemming" />
-                                    <f:selectItems  value="#{plaatsController.allBestemmingen}" var="b" itemLabel="#{b.toString()}" itemValue="#{b.id}"/>
+                                    <f:selectItems  value="#{plaatsController.plaatsen}" var="b" itemLabel="#{b.toString()}" itemValue="#{b.id}"/>
                                 </h:selectOneMenu>
 
                                 <label for="vertrekplaatsER">Vertrekplaats</label>
                                 <h:selectOneMenu value="#{reisController.currentReis.vertrekPlaats.id}" styleClass="form-control" id="vertrekplaatsER" >
                                     <f:selectItem itemValue = "" itemLabel = "Kies je vertrekplaats" />
-                                    <f:selectItems  value="#{plaatsController.allVertrekplaatsen}" var="v" itemLabel="#{v.toString()}" itemValue="#{v.id}"/>
+                                    <f:selectItems  value="#{plaatsController.plaatsen}" var="v" itemLabel="#{v.toString()}" itemValue="#{v.id}"/>
                                 </h:selectOneMenu>
 
                                 <label for="transportmiddelER">Transportmiddel</label>
@@ -82,6 +82,16 @@
 
                                 <label for="plaatsenER">Aantal plaatsen</label>
                                 <h:inputText value="#{reisController.currentReis.maxPlaatsen}" styleClass="form-control" id="plaatsenER">
+                                </h:inputText>
+
+                                <label for="beginDatumER">Begindatum (dd/mm/yyyy)</label>
+                                <h:inputText value="#{reisController.currentReis.beginDatum}" styleClass="form-control" id="beginDatumER">
+                                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                </h:inputText>
+
+                                <label for="eindDatumER">Einddatum (dd/mm/yyyy)</label>
+                                <h:inputText value="#{reisController.currentReis.eindDatum}" styleClass="form-control" id="eindDatumER">
+                                    <f:convertDateTime pattern="dd/MM/yyyy"/>
                                 </h:inputText>
 
                                 <h:inputHidden value="#{reisController.currentReis.id}" binding="#{reisId}" />

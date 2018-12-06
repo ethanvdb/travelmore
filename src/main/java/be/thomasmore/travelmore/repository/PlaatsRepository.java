@@ -32,6 +32,10 @@ public class PlaatsRepository {
         return entityManager.createNamedQuery(Plaats.FIND_ALL_VERTREKPLAATSEN, Plaats.class).getResultList();
     }
 
+    public List<Plaats> findPopulaireBestemmingen(){
+        return entityManager.createNativeQuery(Plaats.FIND_POPULAIRE_BESTEMMINGEN, Plaats.class).getResultList();
+    }
+
     public void insert(Plaats plaats) {
         entityManager.persist(plaats);
     }

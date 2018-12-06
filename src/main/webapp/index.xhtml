@@ -43,11 +43,6 @@
                             <h:commandLink action="#{reisController.nieuweReis}" value="Nieuwe Reis Aanmaken" styleClass="nav-link"/>
                         </h:form>
                     </li>
-                    <li class="nav-item">
-                        <h:form>
-                            <h:commandLink action="#{reisController.editReis(1)}" value="Edit Reis Aanmaken" styleClass="nav-link"/>
-                        </h:form>
-                    </li>
                 </ul>
                 <a class="nav-link" href="login.xhtml">Login</a>
         </div>
@@ -64,13 +59,14 @@
                 <p>
                     <h:form>
                         <div class="form-group">
-                            <h:outputLabel for="inputLand">Land</h:outputLabel>
-                            <h:inputText binding="#{gekozenLand}" styleClass="form-control" id="inputLand">
-
-                            </h:inputText>
+                            <h:outputLabel for="inputLand">Bestemming</h:outputLabel>
+                            <h:selectOneMenu styleClass="form-control" id="inputLand" binding="#{filterBestemming}" >
+                                    <f:selectItem itemValue="#{null}"  itemLabel = "Kies je bestemming"  />
+                                    <f:selectItems  value="#{plaatsController.allBestemmingen}" var="b" itemLabel="#{b.toString()}" itemValue="#{b.naam}"/>
+                                </h:selectOneMenu>
                         </div>
                         <h:commandButton styleClass="btn btn-primary"
-                                value="Zoek" action="#{reisController.getReizenByPlaats(gekozenLand.value)}"/>
+                                value="Zoek" action="#{reisController.getReizenByPlaats(filterBestemming.value)}"/>
                     </h:form>
                 </p>
             </div>
