@@ -6,6 +6,7 @@ import be.thomasmore.travelmore.domain.TypeGebruiker;
 import be.thomasmore.travelmore.service.AdresService;
 import be.thomasmore.travelmore.service.PersoonService;
 
+import javax.faces.bean.SessionScoped;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServlet;
@@ -20,17 +21,19 @@ import javax.inject.Inject;
 import javax.persistence.PersistenceContext;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpSession;
 import javax.validation.constraints.Null;
 import java.io.IOException;
 import java.util.List;
 
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class PersoonController {
 
     private Persoon newPersoon = new Persoon();
-    public Persoon login;
+    private Persoon login;
     private boolean bool = false;
+    private HttpSession session;
 
 //    //Klasse voor encryptie
 //    private TrippleDes trippleDes;
