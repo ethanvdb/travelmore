@@ -2,11 +2,13 @@ package be.thomasmore.travelmore.controller;
 
 import be.thomasmore.travelmore.domain.Betaalmiddel;
 import be.thomasmore.travelmore.domain.Boeking;
+import be.thomasmore.travelmore.domain.Persoon;
 import be.thomasmore.travelmore.domain.Reis;
 import be.thomasmore.travelmore.service.BetaalmiddelService;
 import be.thomasmore.travelmore.service.BoekingService;
 import be.thomasmore.travelmore.service.PersoonService;
 import be.thomasmore.travelmore.service.ReisService;
+import be.thomasmore.travelmore.service.BevestigingService;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -16,12 +18,18 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+//mail sturen
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
+import javax.mail.MessagingException;
+
 @ManagedBean
 @SessionScoped
 public class BoekingController implements Serializable {
     private Reis newReis = new Reis();
     private Boeking boeking = new Boeking();
     private List<Betaalmiddel> betaalmiddelen;
+    private String statusMessage = "";
 
     @EJB
     private ReisService reisService;
@@ -70,14 +78,24 @@ public class BoekingController implements Serializable {
         System.out.println(gebruikersId);
         System.out.println(reisId);
 
+        Persoon gebruiker = persoonService.findPersoonById(gebruikersId);
+
         this.boeking.setReis(this.reisService.findReisById(reisId));
-        this.boeking.setPersoon(this.persoonService.findPersoonById(gebruikersId));
+        this.boeking.setPersoon(gebruiker);
         this.boeking.setDatum(datum);
         this.boeking.setBetaald(betaald);
         this.boeking.setBetaalmiddel(this.betaalmiddelService.findBetaalmiddelById(betaalmiddelId));
 
         this.boekingService.insert(boeking);
 
+        try
+        {
+            BevestigingService.stuurBevestiging("dieter.verboven@gmail.com", "Bevesting reis bij Travelmore", "Beste "+ gebruiker.getVoorNaam() + " " + gebruiker.getNaam() + ", we hebben jouw boeking goed ontvangen.");
+
+        }
+        catch(MessagingException ex) {
+            statusMessage = ex.getMessage();
+        }
         return "index";
     }
 
