@@ -96,55 +96,51 @@
 
                                         <div class="row">
                                             <div class="col-sm-3 col-md-2 col-5">
-                                                <label style="font-weight:bold;">Full Name</label>
+                                                <label style="font-weight:bold;">Naam</label>
                                             </div>
                                             <div class="col-md-8 col-6">
+                                                #{persoonController.login.voorNaam} #{persoonController.login.voorNaam}
                                             </div>
                                         </div>
                                         <hr />
 
                                         <div class="row">
                                             <div class="col-sm-3 col-md-2 col-5">
-                                                <label style="font-weight:bold;">Birth Date</label>
+                                                <label style="font-weight:bold;">Adres</label>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                                March 22, 1994.
+                                                <div class="row">
+                                                    #{persoonController.login.adres.straat} #{persoonController.login.adres.nummer}
+                                                </div>
+                                                <div class="row">
+                                                    #{persoonController.login.adres.postCode} #{persoonController.login.adres.plaats}
+                                                </div>
                                             </div>
                                         </div>
                                         <hr />
 
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Gsm</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                #{persoonController.login.gsm}
+                                            </div>
+                                        </div>
+                                        <hr />
 
                                         <div class="row">
                                             <div class="col-sm-3 col-md-2 col-5">
-                                                <label style="font-weight:bold;">Something</label>
+                                                <label style="font-weight:bold;">Telefoon</label>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                                Something
+                                                #{persoonController.login.telefoon}
                                             </div>
                                         </div>
-                                        <hr />
-                                        <div class="row">
-                                            <div class="col-sm-3 col-md-2 col-5">
-                                                <label style="font-weight:bold;">Something</label>
-                                            </div>
-                                            <div class="col-md-8 col-6">
-                                                Something
-                                            </div>
-                                        </div>
-                                        <hr />
-                                        <div class="row">
-                                            <div class="col-sm-3 col-md-2 col-5">
-                                                <label style="font-weight:bold;">Something</label>
-                                            </div>
-                                            <div class="col-md-8 col-6">
-                                                Something
-                                            </div>
-                                        </div>
-                                        <hr />
 
                                     </div>
                                     <div class="tab-pane fade" id="connectedServices" role="tabpanel" aria-labelledby="ConnectedServices-tab">
-                                        Facebook, Google, Twitter Account that are connected to this account
+                                        Hier komen alle boekingen van de ingelogde gebruiker.
                                     </div>
                                 </div>
                             </div>
