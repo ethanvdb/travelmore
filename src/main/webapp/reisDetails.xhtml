@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:c="http://java.sun.com/jsp/jstl/core"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
@@ -10,7 +9,10 @@
 <link rel="stylesheet" type="text/css" href="css/style.css"/>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="js/travelmore.js"></script>
-<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"></link>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://bootswatch.com/4/simplex/bootstrap.min.css"></link>
 
 <h:head><title>Travel More</title></h:head>
 
@@ -27,18 +29,23 @@
                     <li class="nav-item">
                         <a class="nav-link" href="index.xhtml">Home <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item zoeken-menuknop">
-                        <a class="nav-link" href="#">Reizen zoeken op bestemming</a>
-                    </li>
-                    <li class="nav-item active">
+
+                    <li class="nav-item">
                         <h:form>
-                            <h:commandLink action="#{reisController.nieuweReis}" value="Bekijk alle reizen" styleClass="nav-link"/>
+                            <h:commandLink action="#{reisController.getAllReizen}" value="Bekijk alle reizen" styleClass="nav-link"/>
                         </h:form>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Boeken</a>
-                    </li>
                 </ul>
+                <h:panelGroup rendered="#{persoonController.login.id eq null}">
+                    <h:form>
+                        <h:commandLink action="#{persoonController.loginPagina}" value="Login" styleClass="nav-link"/>
+                    </h:form>
+                </h:panelGroup>
+                <h:panelGroup rendered="#{persoonController.login.id ne null}">
+                    <h:form>
+                        <h:commandLink action="#{persoonController.accountPagina}" value="#{persoonController.login.voorNaam}" styleClass="nav-link"/>
+                    </h:form>
+                </h:panelGroup>
             </div>
         </nav>
     </header>
@@ -90,7 +97,12 @@
 
                                     <div>
                                         <h:form>
-                                            <h:commandButton action="#{boekingController.reisBoeken(reisController.currentReis.id)}" value="Boeken" styleClass="btn btn-primary"/>
+                                            <h:panelGroup rendered="#{persoonController.login ne null}">
+                                                <h:commandButton action="#{boekingController.reisBoeken(reisController.currentReis.id)}" value="Boeken" styleClass="btn btn-primary"/>
+                                            </h:panelGroup>
+                                            <h:panelGroup rendered="#{persoonController.login.id eq null}">
+                                                <h:commandButton action="#{persoonController.loginPagina}" value="Boeken" styleClass="btn btn-primary"/>
+                                            </h:panelGroup>
                                         </h:form>
                                     </div>
                                 </div>

@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
@@ -9,8 +9,10 @@
 <link rel="stylesheet" type="text/css" href="css/style.css"/>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="js/travelmore.js"></script>
-<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"></link>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://bootswatch.com/4/simplex/bootstrap.min.css"></link>
 <h:head><title>Travel More</title></h:head>
 
 <h:body>
@@ -31,18 +33,24 @@
                             <h:commandLink action="#{reisController.getAllReizen}" value="Bekijk alle reizen" styleClass="nav-link"/>
                         </h:form>
                     </li>
-                    <li class="nav-item">
-                        <h:form>
-                            <h:commandLink action="#{reisController.reisBoeken}" value="Boeken" styleClass="nav-link"/>
-                        </h:form>
-                    </li>
-                    <li class="nav-item">
-                        <h:form>
-                            <h:commandLink action="#{reisController.nieuweReis}" value="Nieuwe Reis Aanmaken" styleClass="nav-link"/>
-                        </h:form>
-                    </li>
+                        <h:panelGroup rendered="#{persoonController.login.typeGebruiker.id eq 1}">
+                            <li class="nav-item">
+                                <h:form>
+                                    <h:commandLink action="#{reisController.nieuweReis}" value="Nieuwe Reis Aanmaken" styleClass="nav-link"/>
+                                </h:form>
+                            </li>
+                        </h:panelGroup>
                 </ul>
-                <a class="nav-link" href="login.xhtml">Login</a>
+                <h:panelGroup rendered="#{persoonController.login.id eq null}">
+                    <h:form>
+                        <h:commandLink action="#{persoonController.loginPagina}" value="Login" styleClass="nav-link"/>
+                    </h:form>
+                </h:panelGroup>
+                <h:panelGroup rendered="#{persoonController.login.id ne null}">
+                    <h:form>
+                        <h:commandLink action="#{persoonController.accountPagina}" value="#{persoonController.login.voorNaam}" styleClass="nav-link"/>
+                    </h:form>
+                </h:panelGroup>
             </div>
         </nav>
     </header>
@@ -125,15 +133,28 @@
                                         <h6 class="card-subtitle mb-2">Prijs: #{tempReis.prijs} euro</h6>
                                         <h6 class="card-subtitle mb-2 text-muted">#{tempReis.bestemming.naam} - #{tempReis.bestemming.land.naam}</h6>
                                         <h6 class="card-subtitle mb-2">Adres: #</h6>
-                                        <h:form>
-                                            <h:commandButton action="#{reisController.reisDetails(tempReis.id)}" value="Meer info" styleClass="btn btn-dark"/>
-                                        </h:form>
-                                        <h:form>
-                                            <h:commandButton action="#{reisController.editReis(tempReis.id)}" value="Edit Reis" styleClass="btn btn-primary"/>
-                                        </h:form>
-                                        <h:form>
-                                            <h:commandButton action="#{reisController.deleteReis(tempReis.id)}" value="Delete reis" styleClass="btn btn-danger"/>
-                                        </h:form>
+                                        <h:panelGroup rendered="#{persoonController.login.typeGebruiker.id ne 1}">
+                                            <h:form>
+                                                <h:commandButton action="#{reisController.reisDetails(tempReis.id)}" value="Meer info" styleClass="btn btn-dark"/>
+                                            </h:form>
+                                            <h:form>
+                                                <h:panelGroup rendered="#{persoonController.login ne null}">
+                                                    <h:commandButton action="#{boekingController.reisBoeken(tempReis.id)}" value="Boeken" styleClass="btn btn-primary"/>
+                                                </h:panelGroup>
+                                                <h:panelGroup rendered="#{persoonController.login.id eq null}">
+                                                    <h:commandButton action="#{persoonController.loginPagina}" value="Boeken" styleClass="btn btn-primary"/>
+                                                </h:panelGroup>
+                                            </h:form>
+                                        </h:panelGroup>
+                                        <h:panelGroup rendered="#{persoonController.login.typeGebruiker.id eq 1}">
+                                            <h:form>
+                                                <h:commandButton action="#{reisController.editReis(tempReis.id)}" value="Edit Reis" styleClass="btn btn-info"/>
+                                            </h:form>
+                                            <h:form>
+                                                <h:commandButton action="#{reisController.deleteReis(tempReis.id)}" value="Delete reis" styleClass="btn btn-danger"/>
+                                            </h:form>
+                                        </h:panelGroup>
+
                                     </div>
                                 </div>
                             </div>

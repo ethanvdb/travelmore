@@ -13,8 +13,12 @@ import java.util.Date;
                         query = "SELECT b FROM Boeking b"
                 ),
                 @NamedQuery(
-                        name= Boeking.FIND_BY_ID,
-                        query = "SELECT b from Boeking b"
+                        name = Boeking.FIND_BY_ID,
+                        query = "SELECT b FROM Boeking b"
+                ),
+                @NamedQuery(
+                        name = Boeking.FIND_BY_GEBRUIKERID,
+                        query = "SELECT b FROM Boeking b WHERE b.persoon.id = :gebruikerId"
                 )
         }
 )
@@ -22,6 +26,7 @@ import java.util.Date;
 public class Boeking {
     public static final String FIND_ALL = "Boeking.findAll";
     public static final String FIND_BY_ID = "Boeking.findById";
+    public static final String FIND_BY_GEBRUIKERID = "Boeking.findByGebruikerId";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

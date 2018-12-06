@@ -85,6 +85,14 @@ public class PersoonController {
         return login;
     }
 
+    public String loginPagina(){
+        return "login";
+    }
+
+    public String accountPagina(){
+        return "ingelogd";
+    }
+
     public void setLogin(Persoon login) {
         if (login != null){
             this.login = login;
@@ -165,5 +173,10 @@ public class PersoonController {
         else {
             return "registreren";
         }
+    }
+
+    public String logout(){
+        this.login = null;
+        return "login";
     }
 }

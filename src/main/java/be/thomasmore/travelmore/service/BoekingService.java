@@ -5,6 +5,7 @@ import be.thomasmore.travelmore.repository.BoekingRepository;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.util.List;
 
 @Stateless
 public class BoekingService {
@@ -13,5 +14,9 @@ public class BoekingService {
 
     public void insert(Boeking boeking) {
         boekingRepository.insert(boeking);
+    }
+
+    public List<Boeking> findAllByGebruikerId(int gebruikerId){
+        return boekingRepository.findAllByGebruikerId(gebruikerId);
     }
 }

@@ -109,6 +109,10 @@ public class BoekingController implements Serializable {
         return reisId;
     }
 
+    public List<Boeking> findAllByGebruikerId(int gebruikerId){
+        return this.boekingService.findAllByGebruikerId(gebruikerId);
+    }
+
     public void setReisId(int reisId) {
         this.reisId = reisId;
     }
