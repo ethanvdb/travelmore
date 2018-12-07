@@ -32,7 +32,7 @@ public class BoekingController implements Serializable {
     private Boeking boeking = new Boeking();
     private List<Betaalmiddel> betaalmiddelen;
     private String statusMessage = "";
-    private int reisId = 2;
+    private int reisId = 21;
 
     @EJB
     private ReisService reisService;

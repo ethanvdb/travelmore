@@ -25,7 +25,7 @@ public class ReisController implements Serializable{
     private Reis currentReis;
     private List<Reis> reizen;
     private List<String> lijst = new ArrayList<String>();
-    private int id = 1;
+    private int id = 21;
 
     @EJB
     private ReisService reisService;
@@ -135,7 +135,6 @@ public class ReisController implements Serializable{
     }
 
     public String updateReis(int id){
-        //setCurrentReis(this.reisService.findReisById(id));
         this.reisService.update(this.currentReis);
         setReizen(this.reisService.findAllReizen());
         return "zoekReizen";
