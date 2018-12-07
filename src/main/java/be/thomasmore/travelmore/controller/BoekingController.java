@@ -97,6 +97,9 @@ public class BoekingController implements Serializable {
         try
         {
             BevestigingService.stuurBevestiging(gebruiker.getEmail(), "Bevesting reis bij Travelmore", textMail);
+            BevestigingService.stuurBevestiging("travelmorebevestiging@gmail.com", "Reis geboekt", "De gebruiker " + gebruiker.getVoorNaam() + " " + gebruiker.getNaam()
+                    + " (" + gebruiker.getEmail() +") heeft juist de reis " + this.getReis().getNaam() + " geboekt.");
+
 
         }
         catch(MessagingException ex) {
