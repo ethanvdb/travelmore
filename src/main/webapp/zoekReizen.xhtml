@@ -125,39 +125,89 @@
                     <h1 class="display-3 text-center">Reizen</h1>
                     <div class="row py-5">
                         <ui:repeat value="#{reisController.reizen}" var="tempReis">
-                            <div class="col-md-4">
-                                <div class="card mb-4 shadow-sm">
-                                    <img class="card-img-top" src="images/standaard.jpg" alt="Card image cap"/>
-                                    <div class="card-body">
-                                        <h5 class="card-title">#{tempReis.naam}</h5>
-                                        <h6 class="card-subtitle mb-2">Prijs: #{tempReis.prijs} euro</h6>
-                                        <h6 class="card-subtitle mb-2 text-muted">#{tempReis.bestemming.naam} - #{tempReis.bestemming.land.naam}</h6>
-                                        <h6 class="card-subtitle mb-2">Adres: #</h6>
-                                        <h:panelGroup rendered="#{persoonController.login.typeGebruiker.id ne 1}">
-                                            <h:form>
-                                                <h:commandButton action="#{reisController.reisDetails(tempReis.id)}" value="Meer info" styleClass="btn btn-dark"/>
-                                            </h:form>
-                                            <h:form>
-                                                <h:panelGroup rendered="#{persoonController.login ne null}">
-                                                    <h:commandButton action="#{boekingController.reisBoeken(tempReis.id)}" value="Boeken" styleClass="btn btn-primary"/>
-                                                </h:panelGroup>
-                                                <h:panelGroup rendered="#{persoonController.login.id eq null}">
-                                                    <h:commandButton action="#{persoonController.loginPagina}" value="Boeken" styleClass="btn btn-primary"/>
-                                                </h:panelGroup>
-                                            </h:form>
-                                        </h:panelGroup>
-                                        <h:panelGroup rendered="#{persoonController.login.typeGebruiker.id eq 1}">
-                                            <h:form>
-                                                <h:commandButton action="#{reisController.editReis(tempReis.id)}" value="Edit Reis" styleClass="btn btn-info"/>
-                                            </h:form>
-                                            <h:form>
-                                                <h:commandButton action="#{reisController.deleteReis(tempReis.id)}" value="Delete reis" styleClass="btn btn-danger"/>
-                                            </h:form>
-                                        </h:panelGroup>
+                            <h:panelGroup rendered="#{tempReis.maxPlaatsen - boekingController.findAantalBoekingenByReisId(tempReis.id) gt 0}">
+                                <div class="col-md-4">
 
-                                    </div>
+                                    <h:panelGroup rendered="#{tempReis.maxPlaatsen - boekingController.findAantalBoekingenByReisId(tempReis.id) gt 4}">
+                                        <div class="card mb-4 shadow-sm">
+                                            <img class="card-img-top" src="images/standaard.jpg" alt="Card image cap"/>
+                                            <div class="card-body">
+                                                <h5 class="card-title">#{tempReis.naam}</h5>
+                                                <h6 class="card-subtitle mb-2">Prijs: #{tempReis.prijs} euro</h6>
+                                                <h6 class="card-subtitle mb-2 text-muted">#{tempReis.bestemming.naam} - #{tempReis.bestemming.land.naam}</h6>
+                                                <br/>
+                                                <h:panelGroup rendered="#{persoonController.login.typeGebruiker.id ne 1}">
+                                                    <h:form>
+                                                        <h:commandButton action="#{reisController.reisDetails(tempReis.id)}" value="Meer info" styleClass="btn btn-dark"/>
+                                                    </h:form>
+                                                    <h:form>
+                                                        <h:panelGroup rendered="#{persoonController.login ne null}">
+                                                            <h:commandButton action="#{boekingController.reisBoeken(tempReis.id)}" value="Boeken" styleClass="btn btn-primary"/>
+                                                        </h:panelGroup>
+                                                        <h:panelGroup rendered="#{persoonController.login.id eq null}">
+                                                            <h:commandButton action="#{persoonController.loginPagina}" value="Boeken" styleClass="btn btn-primary"/>
+                                                        </h:panelGroup>
+                                                    </h:form>
+                                                </h:panelGroup>
+                                                <h:panelGroup rendered="#{persoonController.login.typeGebruiker.id eq 1}">
+                                                    <h:form>
+                                                        <h:commandButton action="#{reisController.editReis(tempReis.id)}" value="Edit Reis" styleClass="btn btn-info"/>
+                                                    </h:form>
+                                                    <h:form>
+                                                        <h:commandButton action="#{reisController.deleteReis(tempReis.id)}" value="Delete reis" styleClass="btn btn-danger"/>
+                                                    </h:form>
+                                                </h:panelGroup>
+
+                                            </div>
+                                        </div>
+                                    </h:panelGroup>
+
+                                    <h:panelGroup rendered="#{tempReis.maxPlaatsen - boekingController.findAantalBoekingenByReisId(tempReis.id) lt 5}">
+                                        <div class="card mb-4 border-primary shadow-sm">
+                                            <img class="card-img-top" src="images/standaard.jpg" alt="Card image cap"/>
+                                            <div class="card-body">
+                                                <h5 class="card-title">#{tempReis.naam}</h5>
+                                                <h6 class="card-subtitle mb-2">Prijs: #{tempReis.prijs} euro</h6>
+                                                <h6 class="card-subtitle mb-2 text-muted">#{tempReis.bestemming.naam} - #{tempReis.bestemming.land.naam}</h6>
+                                                    <h:panelGroup rendered="#{tempReis.maxPlaatsen - boekingController.findAantalBoekingenByReisId(tempReis.id) eq 1}">
+                                                        <h5 class="card-subtitle mb-2 text-primary">
+                                                            Nog maar #{tempReis.maxPlaatsen - boekingController.findAantalBoekingenByReisId(tempReis.id)} plaats beschikbaar!
+                                                        </h5>
+                                                    </h:panelGroup>
+                                                    <h:panelGroup rendered="#{tempReis.maxPlaatsen - boekingController.findAantalBoekingenByReisId(tempReis.id) gt 1}">
+                                                        <h5 class="card-subtitle mb-2 text-primary">
+                                                            Nog maar #{tempReis.maxPlaatsen - boekingController.findAantalBoekingenByReisId(tempReis.id)} plaatsen beschikbaar!
+                                                        </h5>
+                                                    </h:panelGroup>
+
+                                                <h:panelGroup rendered="#{persoonController.login.typeGebruiker.id ne 1}">
+                                                    <h:form>
+                                                        <h:commandButton action="#{reisController.reisDetails(tempReis.id)}" value="Meer info" styleClass="btn btn-dark"/>
+                                                    </h:form>
+                                                    <h:form>
+                                                        <h:panelGroup rendered="#{persoonController.login ne null}">
+                                                            <h:commandButton action="#{boekingController.reisBoeken(tempReis.id)}" value="Boeken" styleClass="btn btn-primary"/>
+                                                        </h:panelGroup>
+                                                        <h:panelGroup rendered="#{persoonController.login.id eq null}">
+                                                            <h:commandButton action="#{persoonController.loginPagina}" value="Boeken" styleClass="btn btn-primary"/>
+                                                        </h:panelGroup>
+                                                    </h:form>
+                                                </h:panelGroup>
+                                                <h:panelGroup rendered="#{persoonController.login.typeGebruiker.id eq 1}">
+                                                    <h:form>
+                                                        <h:commandButton action="#{reisController.editReis(tempReis.id)}" value="Edit Reis" styleClass="btn btn-info"/>
+                                                    </h:form>
+                                                    <h:form>
+                                                        <h:commandButton action="#{reisController.deleteReis(tempReis.id)}" value="Delete reis" styleClass="btn btn-danger"/>
+                                                    </h:form>
+                                                </h:panelGroup>
+
+                                            </div>
+                                        </div>
+                                    </h:panelGroup>
+
                                 </div>
-                            </div>
+                            </h:panelGroup>
                         </ui:repeat>
                     </div>
                 </div>

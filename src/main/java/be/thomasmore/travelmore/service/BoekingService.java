@@ -19,4 +19,8 @@ public class BoekingService {
     public List<Boeking> findAllByGebruikerId(int gebruikerId){
         return boekingRepository.findAllByGebruikerId(gebruikerId);
     }
+
+    public List<Boeking> findAantalBoekingenByReisId(int reisId){
+        return boekingRepository.findAantalBoekingenByReisId(reisId);
+    }
 }

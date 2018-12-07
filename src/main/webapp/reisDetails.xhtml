@@ -81,7 +81,7 @@
                                     </div>
                                     <div>
                                         <h5 class="card-subtitle mb-2">Vrije plaatsen:
-                                            <span class="text-muted">#{reisController.currentReis.maxPlaatsen}</span></h5>
+                                            <span class="text-muted">#{reisController.currentReis.maxPlaatsen - boekingController.findAantalBoekingenByReisId(reisController.currentReis.id)}</span></h5>
                                     </div>
                                     <div>
                                         <h5 class="card-subtitle mb-2">Periode:
@@ -96,14 +96,20 @@
                                     </div>
 
                                     <div>
-                                        <h:form>
-                                            <h:panelGroup rendered="#{persoonController.login ne null}">
-                                                <h:commandButton action="#{boekingController.reisBoeken(reisController.currentReis.id)}" value="Boeken" styleClass="btn btn-primary"/>
-                                            </h:panelGroup>
-                                            <h:panelGroup rendered="#{persoonController.login.id eq null}">
-                                                <h:commandButton action="#{persoonController.loginPagina}" value="Boeken" styleClass="btn btn-primary"/>
-                                            </h:panelGroup>
-                                        </h:form>
+                                        <h:panelGroup rendered="#{reisController.currentReis.maxPlaatsen - boekingController.findAantalBoekingenByReisId(reisController.currentReis.id) gt 0}">
+                                            <h:form>
+                                                <h:panelGroup rendered="#{persoonController.login ne null}">
+                                                    <h:commandButton action="#{boekingController.reisBoeken(reisController.currentReis.id)}" value="Boeken" styleClass="btn btn-primary"/>
+                                                </h:panelGroup>
+                                                <h:panelGroup rendered="#{persoonController.login.id eq null}">
+                                                    <h:commandButton action="#{persoonController.loginPagina}" value="Boeken" styleClass="btn btn-primary"/>
+                                                </h:panelGroup>
+                                            </h:form>
+                                        </h:panelGroup>
+                                        <h:panelGroup rendered="#{reisController.currentReis.maxPlaatsen - boekingController.findAantalBoekingenByReisId(reisController.currentReis.id) eq 0}">
+                                            <h:outputText value="Reis volboekt"/>
+                                        </h:panelGroup>
+
                                     </div>
                                 </div>
                             </div>
