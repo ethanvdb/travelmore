@@ -144,7 +144,7 @@
                                                         <h:panelGroup rendered="#{persoonController.login ne null}">
                                                             <h:commandButton action="#{boekingController.reisBoeken(tempReis.id)}" value="Boeken" styleClass="btn btn-primary"/>
                                                         </h:panelGroup>
-                                                        <h:panelGroup rendered="#{persoonController.login.id eq null}">
+                                                        <h:panelGroup rendered="#{persoonController.login eq null}">
                                                             <h:commandButton action="#{persoonController.loginPagina}" value="Boeken" styleClass="btn btn-primary"/>
                                                         </h:panelGroup>
                                                     </h:form>
@@ -188,7 +188,7 @@
                                                         <h:panelGroup rendered="#{persoonController.login ne null}">
                                                             <h:commandButton action="#{boekingController.reisBoeken(tempReis.id)}" value="Boeken" styleClass="btn btn-primary"/>
                                                         </h:panelGroup>
-                                                        <h:panelGroup rendered="#{persoonController.login.id eq null}">
+                                                        <h:panelGroup rendered="#{persoonController.login eq null}">
                                                             <h:commandButton action="#{persoonController.loginPagina}" value="Boeken" styleClass="btn btn-primary"/>
                                                         </h:panelGroup>
                                                     </h:form>
